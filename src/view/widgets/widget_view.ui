@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>View</string>
   </property>
-  <widget class="QOpenGLWidget" name="openGLWidget">
+  <widget class="OpenGLMod" name="openGLWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -30,6 +30,13 @@
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>OpenGLMod</class>
+   <extends>QOpenGLWidget</extends>
+   <header location="global">view/render/ogl_render.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

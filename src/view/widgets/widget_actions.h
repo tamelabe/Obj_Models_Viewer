@@ -16,7 +16,10 @@ public:
     ~Actions();
 
 private:
-    Ui::Actions *ui;
+    Ui::Actions *ui_;
+    void connectButtons();
+
+private slots:
 };
 
 #endif // WIDGET_ACTIONS_H

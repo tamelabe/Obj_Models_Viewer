@@ -1,4 +1,0 @@
-/Volumes/89823065724/Projects/3D_obj_Viewer/src/build/CMakeFiles/3DViewer.dir
-/Volumes/89823065724/Projects/3D_obj_Viewer/src/build/CMakeFiles/edit_cache.dir
-/Volumes/89823065724/Projects/3D_obj_Viewer/src/build/CMakeFiles/rebuild_cache.dir
-/Volumes/89823065724/Projects/3D_obj_Viewer/src/build/CMakeFiles/3DViewer_autogen.dir

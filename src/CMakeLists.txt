@@ -19,18 +19,20 @@ set(PROJECT_SOURCES
         view/mainwindow.cc
         view/mainwindow.h
         view/mainwindow.ui
-        view/widget_settings.cc
-        view/widget_settings.h
-        view/widget_settings.ui
-        view/widget_view.cc
-        view/widget_view.h
-        view/widget_view.ui
-        view/widget_info.cc
-        view/widget_info.h
-        view/widget_info.ui
-        view/widget_actions.cc
-        view/widget_actions.h
-        view/widget_actions.ui
+        view/widgets/widget_settings.cc
+        view/widgets/widget_settings.h
+        view/widgets/widget_settings.ui
+        view/widgets/widget_view.cc
+        view/widgets/widget_view.h
+        view/widgets/widget_view.ui
+        view/widgets/widget_info.cc
+        view/widgets/widget_info.h
+        view/widgets/widget_info.ui
+        view/widgets/widget_actions.cc
+        view/widgets/widget_actions.h
+        view/widgets/widget_actions.ui
+        view/render/ogl_render.cc
+        view/render/ogl_render.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -24,6 +24,36 @@
      </rect>
     </property>
    </widget>
+   <widget class="Info" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1410</x>
+      <y>10</y>
+      <width>260</width>
+      <height>100</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="View" name="widget_3" native="true">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>40</y>
+      <width>1390</width>
+      <height>1000</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Actions" name="widget_4" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>5</y>
+      <width>515</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -41,7 +71,25 @@
   <customwidget>
    <class>Settings</class>
    <extends>QWidget</extends>
-   <header>view/widget_settings.h</header>
+   <header>view/widgets/widget_settings.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Info</class>
+   <extends>QWidget</extends>
+   <header>view/widgets/widget_info.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>View</class>
+   <extends>QWidget</extends>
+   <header>view/widgets/widget_view.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Actions</class>
+   <extends>QWidget</extends>
+   <header>view/widgets/widget_actions.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

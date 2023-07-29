@@ -39,7 +39,7 @@
     <string>Edges:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="lb_vertices">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -52,7 +52,7 @@
     <string>0</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="lb_edges">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -65,7 +65,7 @@
     <string>0</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_15">
+  <widget class="QLabel" name="lb_filename">
    <property name="geometry">
     <rect>
      <x>80</x>

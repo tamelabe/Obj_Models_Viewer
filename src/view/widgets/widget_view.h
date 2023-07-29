@@ -1,14 +1,6 @@
 #ifndef WIDGET_VIEW_H
 #define WIDGET_VIEW_H
 
-#include <QtOpenGLWidgets/qopenglwidget.h>
-
-#include <QGuiApplication>
-#include <QMouseEvent>
-#include <QOpenGLFunctions>
-#include <QPoint>
-#include <QPointerEvent>
-#include <QTime>
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE

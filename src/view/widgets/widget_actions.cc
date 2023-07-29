@@ -3,12 +3,16 @@
 
 Actions::Actions(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Actions)
+    ui_(new Ui::Actions)
 {
-    ui->setupUi(this);
+    ui_->setupUi(this);
 }
 
 Actions::~Actions()
 {
-    delete ui;
+    delete ui_;
+}
+
+void Actions::connectButtons() {
+
 }
