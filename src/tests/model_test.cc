@@ -12,16 +12,17 @@ class ParserTest : public testing::Test {
 };
 
 TEST_F(ParserTest, VerticesTest) {
-  parser.setFilepath("/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/cube.obj");
+  std::string file_path = "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/cube.obj";
+  parser.setFilepath(file_path);
   parser.parseFile();
-  std::list<double> vert = parser.getVertices();
-  std::list<int> fac = parser.getFacets();
-  for (auto i = vert.begin(); i != vert.end(); ++i) {
-    std::cout << *i << '\n';
+  std::vector<double> vert = parser.getVertices();
+  std::vector<unsigned> fac = parser.getFacets();
+  for (size_t i = 0; i < vert.size(); ++i) {
+    std::cout << vert[i] << '\n';
   }
   std::cout << "FACETS:\n";
-  for (auto i = fac.begin(); i != fac.end(); ++i) {
-    std::cout << *i << '\n';
+  for (size_t i = 0; i < fac.size(); ++i) {
+    std::cout << fac[i] << '\n';
   }
 }
 

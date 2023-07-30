@@ -12,7 +12,7 @@ class Settings : public QWidget
     Q_OBJECT
 
 public:
-    explicit Settings(QWidget *parent = nullptr);
+    Settings(QWidget *parent = nullptr);
     ~Settings();
 
 private:

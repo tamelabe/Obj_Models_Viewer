@@ -2,24 +2,26 @@
 #define SRC_MODEL_MODEL_H_
 
 #include "parser.h"
+#include "../helpers/data_objects.h"
 
 namespace s21 {
 
 class Model {
  public:
+
   static Model& getInstance() {
-    static Model Model;
-    return Model;
+    static Model model;
+    return model;
   }
 
   void setFilepath(const std::string& filepath) {
-    parser_.removeData();
     parser_.setFilepath(filepath);
     parser_.parseFile();
+    object_.vertices = parser_.getVertices();
+    object_.facets = parser_.getFacets();
   }
 
-  std::list<double> getVertices() { return parser_.getVertices(); }
-  std::list<int> getFacets() { return parser_.getFacets(); }
+  GLObject getObject() { return object_; }
 
  private:
   Model() = default;
@@ -30,9 +32,7 @@ class Model {
   Model& operator=(Model&&) = delete;
 
   Parser& parser_ = Parser::getInstance();
-
-
-
+  GLObject object_{};
 };
 
 } // namespace s21

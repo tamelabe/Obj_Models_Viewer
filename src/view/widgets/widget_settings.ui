@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QSlider" name="horSlider_rotateX">
+  <widget class="QSlider" name="sl_rotation_x">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -35,7 +35,7 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QSlider" name="horSlider_rotateX_3">
+  <widget class="QSlider" name="sl_rotation_z">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -70,7 +70,7 @@
     <string>Vertex size</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_rotateX_7">
+  <widget class="QSpinBox" name="sb_scale">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -118,7 +118,7 @@
     <string>Z</string>
    </property>
   </widget>
-  <widget class="QSlider" name="horSlider_rotateX_6">
+  <widget class="QSlider" name="sl_moving_x">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -153,7 +153,7 @@
     <string>Y</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_rotateX_4">
+  <widget class="QSpinBox" name="sb_moving_y">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -188,7 +188,7 @@
     <string>MOVING</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="bt_bg_color">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -214,7 +214,7 @@
     <string>X</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_rotateX_2">
+  <widget class="QSpinBox" name="sb_rotate_y">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -236,7 +236,7 @@
     <number>0</number>
    </property>
   </widget>
-  <widget class="QSlider" name="horSlider_rotateX_2">
+  <widget class="QSlider" name="sl_rotation_y">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -258,7 +258,7 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_rotateX_5">
+  <widget class="QSpinBox" name="sb_moving_z">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -280,7 +280,7 @@
     <number>0</number>
    </property>
   </widget>
-  <widget class="QSlider" name="horSlider_rotateX_7">
+  <widget class="QSlider" name="sl_scale">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -315,7 +315,7 @@
     <string>SCALE</string>
    </property>
   </widget>
-  <widget class="QSlider" name="horSlider_rotateX_4">
+  <widget class="QSlider" name="sl_moving_z">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -379,7 +379,7 @@ border: 0px solid black;</string>
      <string>EDGES TYPE</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_Parallel_9">
+   <widget class="QRadioButton" name="rb_et_solid">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -398,7 +398,7 @@ border: 0px solid black;</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_Parallel_10">
+   <widget class="QRadioButton" name="rb_et_dashed">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -415,7 +415,7 @@ border: 0px solid black;</string>
     </property>
    </widget>
   </widget>
-  <widget class="QSpinBox" name="spinBox_rotateX_9">
+  <widget class="QSpinBox" name="sb_edges_size">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -466,7 +466,7 @@ border: 0px solid black;</string>
      <string>VERTEX TYPE</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_Parallel_4">
+   <widget class="QRadioButton" name="rb_vt_none">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -482,7 +482,7 @@ border: 0px solid black;</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_Parallel_11">
+   <widget class="QRadioButton" name="rb_vt_ball">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -498,7 +498,7 @@ border: 0px solid black;</string>
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_Parallel_12">
+   <widget class="QRadioButton" name="rb_vt_cube">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -528,7 +528,7 @@ border: 0px solid black;</string>
     <string>Z</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_rotateX_8">
+  <widget class="QSpinBox" name="sb_vertex_size">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -563,7 +563,7 @@ border: 0px solid black;</string>
     <string>X</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="bt_vertex_color">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -576,7 +576,7 @@ border: 0px solid black;</string>
     <string>Set vertex color</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_rotateX">
+  <widget class="QSpinBox" name="sb_rotate_x">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -598,7 +598,7 @@ border: 0px solid black;</string>
     <number>0</number>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_rotateX_6">
+  <widget class="QSpinBox" name="sb_moving_x">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -649,7 +649,7 @@ border: 0px solid black;</string>
      <string>PROJECTION TYPE</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_Parallel_13">
+   <widget class="QRadioButton" name="rb_pt_parallel">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -665,7 +665,7 @@ border: 0px solid black;</string>
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_Parallel_14">
+   <widget class="QRadioButton" name="rb_pt_central">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -695,7 +695,7 @@ border: 0px solid black;</string>
     <string>ROTATION</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_rotateX_3">
+  <widget class="QSpinBox" name="sb_rotate_z">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -717,7 +717,7 @@ border: 0px solid black;</string>
     <number>0</number>
    </property>
   </widget>
-  <widget class="QSlider" name="horSlider_rotateX_5">
+  <widget class="QSlider" name="sl_moving_y">
    <property name="geometry">
     <rect>
      <x>30</x>

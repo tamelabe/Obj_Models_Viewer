@@ -2,6 +2,7 @@
 #define WIDGET_INFO_H
 
 #include <QWidget>
+#include "../../controller/controller.h"
 
 namespace Ui {
 class Info;
@@ -17,6 +18,7 @@ public:
 
 private:
     Ui::Info *ui;
+    s21::Controller& controller_ = s21::Controller::getInstance();
 };
 
 #endif // WIDGET_INFO_H

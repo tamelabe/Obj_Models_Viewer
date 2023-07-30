@@ -13,18 +13,22 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets OpenGLWidgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGLWidgets)
-
 set(PROJECT_SOURCES
         main.cc
+#        model/model.h
+#        model/model.cc
+#        model/parser.h
+#        model/parser.cc
+#        controller/controller.h
         view/mainwindow.cc
         view/mainwindow.h
         view/mainwindow.ui
         view/widgets/widget_settings.cc
         view/widgets/widget_settings.h
         view/widgets/widget_settings.ui
-        view/widgets/widget_view.cc
-        view/widgets/widget_view.h
-        view/widgets/widget_view.ui
+        view/widgets/widget_scene.cc
+        view/widgets/widget_scene.h
+        view/widgets/widget_scene.ui
         view/widgets/widget_info.cc
         view/widgets/widget_info.h
         view/widgets/widget_info.ui
@@ -33,6 +37,7 @@ set(PROJECT_SOURCES
         view/widgets/widget_actions.ui
         view/render/ogl_render.cc
         view/render/ogl_render.h
+        helpers/data_objects.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

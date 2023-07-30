@@ -1,31 +1,34 @@
 #ifndef SRC_CONTROLLER_CONTROLLER_H_
 #define SRC_CONTROLLER_CONTROLLER_H_
 
-#include "../Model/model.h"
+#include "../model/model.h"
+#include "../helpers/data_objects.h"
 
 namespace s21 {
 
 class Controller {
  public:
+
   static Controller& getInstance() {
-    if (!controller_) controller_ = new Controller();
-    return controller_;
+    static Controller controller;
+    return controller;
   }
 
   void setFilepath(const std::string& filepath) { model_.setFilepath(filepath); }
-  std::list<double> getVertices() { return model_.getVertices(); }
-  std::list<int> getFacets() { return model_.getFacets(); }
+  GLObject getObject() { return model_.getObject(); }
 
  private:
-  Controller() { Model& model_ = Model::getInstance(); }
+
+  Controller() {}
   Controller(const Controller&) = delete;
   Controller(Controller&&) = delete;
-  ~Controller() = default;
+  ~Controller() {}
   Controller& operator=(const Controller&) = delete;
   Controller& operator=(Controller&&) = delete;
 
-  static Controller* controller_;
+  Model& model_ = Model::getInstance();
 };
+
 
 } // namespace s21
 

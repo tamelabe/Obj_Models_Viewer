@@ -34,7 +34,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="Scene" name="w_scene" native="true">
+   <widget class="QWidget" name="w_scene" native="true">
     <property name="geometry">
      <rect>
       <x>5</x>
@@ -78,12 +78,6 @@
    <class>Info</class>
    <extends>QWidget</extends>
    <header>view/widgets/widget_info.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>Scene</class>
-   <extends>QWidget</extends>
-   <header>view/widgets/widget_scene.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

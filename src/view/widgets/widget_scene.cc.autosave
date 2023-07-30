@@ -1,0 +1,57 @@
+#include "widget_scene.h"
+#include "./ui_widget_scene.h"
+
+Scene::Scene(QWidget *parent)
+    : QWidget(parent),
+      ui_(new Ui::Scene)
+{
+    ui_->setupUi(this);
+}
+
+Scene::~Scene()
+{
+    delete ui_;
+}
+
+v
+
+
+void Scene::drawObject() {
+  if (m_indexBuffer.isCreated()) m_indexBuffer.destroy();
+  if (m_arrayBuffer.isCreated()) m_arrayBuffer.destroy();
+  QVector<QVector3D> coords;
+  double *vertexArray;
+  long *indicesArray;
+  unsigned vertexAmount = 0;
+  unsigned indicesAmount = 0;
+  QVector<VertexData> vertexes;
+  QVector<GLuint> indexes;
+  QByteArray bstr = path.toLocal8Bit();
+  char *str = bstr.data();
+  parser(str, &vertexAmount, &vertexArray, &indicesAmount, &indicesArray);
+  for (unsigned i = 0; i < vertexAmount - 2; i += 3) {
+    coords.append(
+        QVector3D(vertexArray[i], vertexArray[i + 1], vertexArray[i + 2]));
+  }
+
+  for (unsigned i = 0; i < indicesAmount; i++) {
+    vertexes.append(VertexData(coords[indicesArray[i] - 1]));
+    indexes.append(indexes.size());
+  }
+  countVertex = vertexAmount / 3;
+  countLine = getNumberOfEdges(indicesArray, indicesAmount);
+  free(vertexArray);
+  free(indicesArray);
+
+  m_arrayBuffer.create();
+  m_arrayBuffer.bind();
+  m_arrayBuffer.allocate(vertexes.constData(),
+                         vertexes.size() * sizeof(VertexData));
+  m_arrayBuffer.release();
+
+  m_indexBuffer.create();
+  m_indexBuffer.bind();
+  m_indexBuffer.allocate(indexes.constData(), indexes.size() * sizeof(GLuint));
+  m_indexBuffer.release();
+}
+*/
