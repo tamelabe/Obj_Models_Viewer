@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "widgets/widget_actions.h"
-#include "widgets/widget_scene.h"
+#include "render/ogl_render.h"
 #include "widgets/widget_settings.h"
 #include "widgets/widget_info.h"
 

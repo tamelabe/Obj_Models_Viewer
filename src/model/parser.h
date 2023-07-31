@@ -27,7 +27,7 @@ class Parser {
     while (std::getline(f_stream, line)) {
       if (line[0] == 'v' && line[1] == ' ') {
         parseVertices(line);
-      } else if  (line[0] == 'f' && line[1] == ' ') {
+      } else if (line[0] == 'f' && line[1] == ' ') {
         parseFacets(line);
       }
     }
@@ -61,7 +61,8 @@ class Parser {
 
   void parseFacets(const std::string& line) {
     size_t size = line.size();
-    std::vector<int> raw_surface(3);
+    std::vector<int> raw_surface;
+    raw_surface.reserve(3);
     for (size_t i = 2; i < size; ++i) {
       if (line[i - 1] == ' ' && std::isdigit(line[i]))
         raw_surface.push_back(std::stoi(line.substr(i - 1)) - 1);

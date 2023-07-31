@@ -34,16 +34,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="Scene" name="w_scene" native="true">
-    <property name="geometry">
-     <rect>
-      <x>5</x>
-      <y>40</y>
-      <width>1390</width>
-      <height>1000</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="Actions" name="w_actions" native="true">
     <property name="geometry">
      <rect>
@@ -51,6 +41,16 @@
       <y>5</y>
       <width>515</width>
       <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="OpenGLMod" name="w_scene" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>1380</width>
+      <height>1000</height>
      </rect>
     </property>
    </widget>
@@ -81,15 +81,15 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>Scene</class>
-   <extends>QWidget</extends>
-   <header>view/widgets/widget_scene.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>Actions</class>
    <extends>QWidget</extends>
    <header>view/widgets/widget_actions.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>OpenGLMod</class>
+   <extends>QWidget</extends>
+   <header location="global">view/render/ogl_render.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

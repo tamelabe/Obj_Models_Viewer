@@ -12,6 +12,21 @@ struct GLObject {
   std::vector<unsigned> facets{};
 };
 
+struct TransformParams {
+ public:
+  /**
+   * 'm' - move
+   * 'r' - rotate
+   * 's' - scale
+   */
+  char pos_type{};
+  /**
+   * x, y, z
+   */
+  char axis{};
+  double value{};
+};
+
 
 
 }  // namespace s21

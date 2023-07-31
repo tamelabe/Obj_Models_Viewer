@@ -17,12 +17,13 @@ TEST_F(ParserTest, VerticesTest) {
   parser.parseFile();
   std::vector<double> vert = parser.getVertices();
   std::vector<unsigned> fac = parser.getFacets();
-  for (size_t i = 0; i < vert.size(); ++i) {
-    std::cout << vert[i] << '\n';
+  for (size_t i = 2; i < vert.size(); i += 3) {
+    std::cout << vert[i - 2] << ' ' << vert[i - 1] << ' ' << vert[i] << '\n';
   }
   std::cout << "FACETS:\n";
-  for (size_t i = 0; i < fac.size(); ++i) {
-    std::cout << fac[i] << '\n';
+  for (size_t i = 5; i < fac.size(); i += 6) {
+    std::cout << fac[i - 5] << ' ' << fac[i - 4] << ' ' << fac[i-3] << ' ';
+    std::cout << fac[i - 2] << ' ' << fac[i - 1] << ' ' << fac[i] << '\n';
   }
 }
 

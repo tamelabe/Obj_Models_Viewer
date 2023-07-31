@@ -17,5 +17,5 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateView()
 {
-//    ui->w_scene->update();
+    ui->w_scene->updateObject();
 }

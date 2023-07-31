@@ -26,9 +26,6 @@ set(PROJECT_SOURCES
         view/widgets/widget_settings.cc
         view/widgets/widget_settings.h
         view/widgets/widget_settings.ui
-        view/widgets/widget_scene.cc
-        view/widgets/widget_scene.h
-        view/widgets/widget_scene.ui
         view/widgets/widget_info.cc
         view/widgets/widget_info.h
         view/widgets/widget_info.ui
