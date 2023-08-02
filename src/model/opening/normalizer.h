@@ -7,25 +7,27 @@
 namespace s21 {
 class Normalizer {
  public:
-  static Normalizer& getInstance();
-
-  void setObjectRef(GLObject &object) { object_ = &object; }
-  void normalize();
-
- private:
   Normalizer() = default;
+  ~Normalizer() = default;
   Normalizer(const Normalizer&) = delete;
   Normalizer(Normalizer&&) = delete;
-  ~Normalizer() = default;
   Normalizer& operator=(const Normalizer&) = delete;
   Normalizer& operator=(Normalizer&&) = delete;
 
+  void setObjectRef(GLObject &object);
+  void normalize();
+  void clearEdges();
+
+ private:
   Edges edges_;
   float scale_{};
+//  std::vector<float> center_{};
   GLObject* object_ = nullptr;
 
   void findEdges();
   float findCenter(char axis);
+  float findMaxDistance();
+  void findScale(float max_dist);
 };
 
 } // namespace s21

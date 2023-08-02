@@ -80,10 +80,10 @@
     </rect>
    </property>
    <property name="minimum">
-    <number>-300</number>
+    <number>-1000</number>
    </property>
    <property name="maximum">
-    <number>100</number>
+    <number>1000</number>
    </property>
    <property name="stepType">
     <enum>QAbstractSpinBox::DefaultStepType</enum>
@@ -290,10 +290,10 @@
     </rect>
    </property>
    <property name="minimum">
-    <number>-300</number>
+    <number>-500</number>
    </property>
    <property name="maximum">
-    <number>300</number>
+    <number>500</number>
    </property>
    <property name="pageStep">
     <number>1</number>

@@ -16,11 +16,14 @@ class Info : public QWidget
 
 public:
     explicit Info(QWidget *parent = nullptr);
+    void updateInfo();
     ~Info();
 
 private:
-    Ui::Info *ui;
-    s21::Controller& controller_ = s21::Controller::getInstance();
+    Ui::Info *ui_;
+    Controller& controller_ = s21::Controller::getInstance();
+    const GLObject* object_ = nullptr;
+    std::string filepath_{};
 };
 
 } // namespace s21

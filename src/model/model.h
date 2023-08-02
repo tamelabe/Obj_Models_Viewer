@@ -9,8 +9,8 @@ namespace s21 {
 
 class Model {
  public:
-
   static Model& getInstance();
+
   const GLObject& getObject() const { return object_; }
   void setFilepath(const std::string& filepath);
   void changeObjState(const TransformParams &tp);
@@ -23,8 +23,8 @@ class Model {
   Model& operator=(const Model&) = delete;
   Model& operator=(Model&&) = delete;
 
-  Parser& parser_ = Parser::getInstance();
-  Normalizer& normalizer_ = Normalizer::getInstance();
+  Parser parser_{};
+  Normalizer normalizer_{};
   GLObject object_{};
   Transformer transform_;
 };

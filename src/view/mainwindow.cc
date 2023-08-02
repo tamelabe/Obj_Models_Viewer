@@ -21,6 +21,7 @@ MainWindow::~MainWindow()
 void MainWindow::updateView()
 {
     ui_->w_scene->updateObject();
+    ui_->w_info->updateInfo();
 }
 
 } // namespace s21

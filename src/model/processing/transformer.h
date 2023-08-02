@@ -14,8 +14,8 @@ class Transformer {
   }
   ~Transformer() { delete current; }
 
-  void Execute(const TransformParams &tp, GLObject &object) {
-    current->Execute(tp, object);
+  void execute(const TransformParams &tp, GLObject &object) {
+    current->execute(tp, object);
   }
 
  private:

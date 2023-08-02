@@ -8,7 +8,7 @@ Model& Model::getInstance() {
 }
 
 void Model::setFilepath(const std::string &filepath) {
-  parser_.setFilepath(filepath);
+  object_.filepath = filepath;
   parser_.setObjectRef(object_);
   parser_.parseFile();
   normalizer_.setObjectRef(object_);
@@ -23,7 +23,7 @@ void Model::changeObjState(const TransformParams &tp) {
   } else if (tp.pos_type == 's') {
     transform_.setStrategy(new Scale);
   }
-  transform_.Execute(tp, object_);
+  transform_.execute(tp, object_);
 }
 
 } // namespace s21

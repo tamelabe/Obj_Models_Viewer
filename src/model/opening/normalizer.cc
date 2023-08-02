@@ -2,17 +2,26 @@
 
 namespace s21 {
 
-Normalizer& Normalizer::getInstance() {
-  static Normalizer normalizer;
-  return normalizer;
+void Normalizer::setObjectRef(GLObject &object) {
+  object_ = &object;
+  clearEdges();
 }
 
 void Normalizer::normalize() {
   findEdges();
   std::vector<float> center{ findCenter('x'), findCenter('y'), findCenter('z') };
   size_t max_size = object_->vertices.size();
-  for (size_t i = 0; i < max_size; i += 3)
+  findScale(findMaxDistance());
+  for (size_t i = 0; i < max_size; ++i) {
     object_->vertices[i] -= center[i % 3];
+    object_->vertices[i] *= scale_;
+  }
+}
+
+void Normalizer::clearEdges() {
+  edges_.x_max = edges_.x_min = 0;
+  edges_.y_max = edges_.y_min = 0;
+  edges_.z_max = edges_.z_min = 0;
 }
 
 void Normalizer::findEdges() {
@@ -43,6 +52,23 @@ float Normalizer::findCenter(char axis) {
     max = edges_.z_max;
   }
   return min + (max - min) / 2;
+}
+
+float Normalizer::findMaxDistance() {
+    float avg_x = edges_.x_max - edges_.x_min;
+    float avg_y = edges_.y_max - edges_.y_min;
+    float avg_z = edges_.z_max - edges_.z_min;
+    if (avg_x > avg_y && avg_x > avg_z) {
+        return avg_x;
+    } else if (avg_y > avg_x && avg_y > avg_z) {
+        return avg_y;
+    } else {
+        return avg_z;
+    }
+}
+
+void Normalizer::findScale(float max_dist) {
+    scale_ = (4 / max_dist);
 }
 
 } // namespace s21

@@ -2,9 +2,10 @@
 
 namespace s21 {
 
-Parser& Parser::getInstance() {
-  static Parser parser;
-  return parser;
+void Parser::setObjectRef(GLObject &object) {
+  vertices_ = &object.vertices;
+  facets_ = &object.facets;
+  filepath_ = object.filepath;
 }
 
 void Parser::parseFile() {

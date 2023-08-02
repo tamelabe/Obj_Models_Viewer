@@ -37,7 +37,6 @@ private:
 
 signals:
     void settingsUpdated();
-
 };
 
 } // namespace s21
