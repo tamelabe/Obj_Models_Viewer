@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+namespace s21 {
+
 Settings::Settings(QWidget *parent) :
     QWidget(parent),
     ui_(new Ui::Settings)
@@ -116,3 +118,4 @@ int Settings::updateState(char pos_type, char axis, int value) {
     return prev_value;
 }
 
+} // namespace s21

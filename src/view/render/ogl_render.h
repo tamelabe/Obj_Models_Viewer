@@ -24,22 +24,24 @@ class OpenGLMod;
 }
 QT_END_NAMESPACE
 
+namespace s21 {
+
 class OpenGLMod : public QOpenGLWidget {
   Q_OBJECT
 
  public:
   OpenGLMod(QWidget *parent = nullptr) :
-        QOpenGLWidget(parent) {}
+        QOpenGLWidget(parent) {
+  }
   ~OpenGLMod() { }
 
     void updateObject() {
-        object_ = controller_.getObject();
-        std::cout << "OBJ LOADED" << object_.facets.size() << '\n';
+        object_ = &controller_.getObject();
         update();
     }
 
  private:
-  s21::GLObject object_;
+  const s21::GLObject* object_ = nullptr;
   s21::Controller& controller_ = s21::Controller::getInstance();
   QOpenGLBuffer m_arrayBuffer;
   QOpenGLBuffer m_indexBuffer;
@@ -69,9 +71,10 @@ class OpenGLMod : public QOpenGLWidget {
   }
 
   void drawObject() {
+          if (object_ == nullptr) return;
           glPointSize(5);
 
-          glVertexPointer(3, GL_DOUBLE, 0, object_.vertices.data());
+          glVertexPointer(3, GL_FLOAT, 0, object_->vertices.data());
           glEnableClientState(GL_VERTEX_ARRAY);
           glLineWidth(2);
 
@@ -82,38 +85,14 @@ class OpenGLMod : public QOpenGLWidget {
 
           glDisable(GL_LINE_STIPPLE);
 
-          glDrawElements(GL_LINES, object_.facets.size(), GL_UNSIGNED_INT, object_.facets.data());
+          glDrawElements(GL_LINES, object_->facets.size(), GL_UNSIGNED_INT, object_->facets.data());
 
           glDisableClientState(GL_VERTEX_ARRAY);
 
   }
 
-//  void drawLine() {
-//      glVertexPointer(3, GL_DOUBLE, 0, object_.vertices.data());
-//      glEnableClientState(GL_VERTEX_ARRAY);
-//      glDrawElements(GL_LINES, object_.facets.size(), GL_UNSIGNED_INT, object_.facets.data());
-//      glDisableClientState(GL_VERTEX_ARRAY);
-//  }
-
-
-//  void drawLine() {
-//      m_arrayBuffer.create();
-//      m_arrayBuffer.bind();
-//      m_arrayBuffer.allocate(object_.vertices.data(),
-//                             object_.vertices.size() * sizeof(double));
-//      m_arrayBuffer.release();
-
-//      m_indexBuffer.create();
-//      m_indexBuffer.bind();
-//      m_indexBuffer.allocate(object_.facets.data(), object_.facets.size() * sizeof(unsigned));
-//      m_indexBuffer.release();
-//  }
-//  void setProject();
-//  void setLineMod();
-//  void setLineSize();
-//  void setApexMod();
-//  void setApexSize();
-
 };
+
+} // namespace s21
 
 #endif  // S21_RENDER_H

@@ -7,6 +7,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+set(CMAKE_CXX_FLAGS  "-std=c++17 -O2 -Wall")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,13 +17,15 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGLWidgets)
 set(PROJECT_SOURCES
         main.cc
         model/model.h
-#        model/model.cc
-        model/parser.h
-        model/parser.cc
-        model/affine.h
-        model/affine.cc
-        model/base_movement.h
-        model/base_movement.cc
+        model/model.cc
+        model/opening/parser.h
+        model/opening/parser.cc
+        model/opening/normalizer.cc
+        model/opening/normalizer.h
+        model/processing/base_movement.cc
+        model/processing/base_movement.h
+        model/processing/transformer.cc
+        model/processing/transformer.h
         controller/controller.h
         view/mainwindow.cc
         view/mainwindow.h
@@ -36,9 +39,6 @@ set(PROJECT_SOURCES
         view/widgets/widget_actions.cc
         view/widgets/widget_actions.h
         view/widgets/widget_actions.ui
-        view/widgets/spinbox_slider.cc
-        view/widgets/spinbox_slider.h
-        view/widgets/spinbox_slider.ui
         view/render/ogl_render.cc
         view/render/ogl_render.h
         helpers/data_objects.h

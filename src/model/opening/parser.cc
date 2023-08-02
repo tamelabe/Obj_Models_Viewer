@@ -24,15 +24,15 @@ void Parser::parseFile() {
 }
 
 void Parser::removeData() {
-  vertices_.clear();
-  facets_.clear();
+  vertices_->clear();
+  facets_->clear();
 }
 
 void Parser::parseVertices(const std::string& line) {
   size_t size = line.size();
   for (size_t i = 2; i < size; ++i) {
     if (line[i - 1] == ' ' && (std::isdigit(line[i]) || line[i] == '-'))
-      vertices_.push_back(std::stod(line.substr(i - 1)));
+      vertices_->push_back(std::stod(line.substr(i - 1)));
   }
 }
 
@@ -54,11 +54,11 @@ void Parser::parseFacets(const std::string& line) {
 void Parser::createSurface(const std::vector<int> &raw) {
   size_t size = raw.size() - 1;
   for (size_t i = 0; i < size; ++i) {
-    facets_.push_back(raw[i]);
-    facets_.push_back(raw[i + 1]);
+    facets_->push_back(raw[i]);
+    facets_->push_back(raw[i + 1]);
   }
-  facets_.push_back(raw[size]);
-  facets_.push_back(raw[0]);
+  facets_->push_back(raw[size]);
+  facets_->push_back(raw[0]);
 }
 
 void Parser::reserveCapacity() {
@@ -72,8 +72,8 @@ void Parser::reserveCapacity() {
       ++f_count;
     }
   }
-  vertices_.reserve(v_count);
-  facets_.reserve(f_count * 2);
+  vertices_->reserve(v_count);
+  facets_->reserve(f_count * 2);
   stream.close();
 }
 

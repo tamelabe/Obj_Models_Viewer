@@ -8,6 +8,8 @@ namespace Ui {
 class Info;
 }
 
+namespace s21 {
+
 class Info : public QWidget
 {
     Q_OBJECT
@@ -20,5 +22,7 @@ private:
     Ui::Info *ui;
     s21::Controller& controller_ = s21::Controller::getInstance();
 };
+
+} // namespace s21
 
 #endif // WIDGET_INFO_H

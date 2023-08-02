@@ -1,64 +1,30 @@
-#include <iostream>
+#include "model.h"
 
+namespace s21 {
 
-
-class BaseMovement {
- public:
-    virtual BaseMovement() = default;
-    virtual ~BaseMovement() = default;
-    virtual void Execute(float x, float y, float z) = 0;
-
-};
-
-class Move : public BaseMovement {
- public:
-  void Execute(float x, float y, float z) override {
-    std::cout << "Move";
-  }
-  ~Move() override {};
-};
-
-class Rotate : public BaseMovement {
- public:
-  void Execute(float x, float y, float z) override {
-    std::cout << "Rotate";
-  }
-  ~Rotate() override {};
-};
-
-class Scale : public BaseMovement {
- public:
-  void Execute(float x, float y, float z) override {
-    std::cout << "Scale";
-  }
-  ~Scale() override {};
-};
-
-class Strategy {
- public:
-  Strategy() : current(new Move) {};
-  void SetStrategy(BaseMovement *c)
-  {
-    delete current;
-    current = c;
-  }
-  ~Strategy() {
-    delete current;
-  }
-
-  void Execute(float x, float y, float z) {
-    current->Execute(x, y, z);
-  }
- private:
-  BaseMovement *current = nullptr;
-};
-
-int main() {
-  Strategy s;
-  s.Execute(0, 0, 0);
-  s.SetStrategy(new Scale);
-  s.Execute(0, 0, 0);
-  s.SetStrategy(new Rotate);
-  s.Execute(0, 0, 0);
+Model& Model::getInstance() {
+  static Model model;
+  return model;
 }
+
+void Model::setFilepath(const std::string &filepath) {
+  parser_.setFilepath(filepath);
+  parser_.setObjectRef(object_);
+  parser_.parseFile();
+  normalizer_.setObjectRef(object_);
+  normalizer_.normalize();
+}
+
+void Model::changeObjState(const TransformParams &tp) {
+  if (tp.pos_type == 'm') {
+    transform_.setStrategy(new Move);
+  } else if (tp.pos_type == 'r') {
+    transform_.setStrategy(new Rotate);
+  } else if (tp.pos_type == 's') {
+    transform_.setStrategy(new Scale);
+  }
+  transform_.Execute(tp, object_);
+}
+
+} // namespace s21
 

@@ -1,19 +1,18 @@
-#ifndef SRC_MODEL_AFFINE_H_
-#define SRC_MODEL_AFFINE_H_
+#ifndef SRC_MODEL_TRANSFORMER_H_
+#define SRC_MODEL_TRANSFORMER_H_
 
 #include "base_movement.h"
-//#include "../helpers/data_objects.h"
 
 namespace s21 {
 
-class AffineTransforms {
+class Transformer {
  public:
-  AffineTransforms() : current(new Move) {};
+  Transformer() : current(new Move) {};
   void setStrategy(BaseMovement *c) {
     delete current;
     current = c;
   }
-  ~AffineTransforms() { delete current; }
+  ~Transformer() { delete current; }
 
   void Execute(const TransformParams &tp, GLObject &object) {
     current->Execute(tp, object);
@@ -25,5 +24,4 @@ class AffineTransforms {
 
 } // namespace s21
 
-
-#endif  // SRC_MODEL_AFFINE_H_
+#endif  // SRC_MODEL_TRANSFORMER_H_

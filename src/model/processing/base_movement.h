@@ -1,9 +1,8 @@
 #ifndef SRC_MODEL_BASE_MOVEMENT_H_
 #define SRC_MODEL_BASE_MOVEMENT_H_
 
-#include "../helpers/data_objects.h"
+#include "../../helpers/data_objects.h"
 #include <cmath>
-#include <iostream>
 
 namespace s21 {
 
@@ -28,7 +27,7 @@ class Move : public BaseMovement {
       i_def = 2;
     }
     size_t max_size = object.vertices.size() - 2 + i_def;
-    double value = tp.value / 50.0;
+    float value = tp.value / 50.0;
     for (size_t i = i_def; i < max_size; i += 3) {
       object.vertices[i] += value;
     }
@@ -51,8 +50,8 @@ class Rotate : public BaseMovement {
 
     size_t max_size = object.vertices.size() + i_def - 2;
     size_t axis_1{}, axis_2{};
-    double value  = tp.value * 3.141592653589 / 180;
-    double vert_1{}, vert_2{};
+    float value  = tp.value * 3.141592653589 / 180;
+    float vert_1{}, vert_2{};
     for (size_t i = i_def; i < max_size; i += 3) {
       axis_1 = i + incr_1;
       axis_2 = i + incr_2;
@@ -70,9 +69,9 @@ class Scale : public BaseMovement {
   ~Scale() override {};
 
   void Execute(const TransformParams &tp, GLObject &object) override {
-    double scale = 1.0 + tp.value / 100.0;
-    std::cout << "BEFORE:" << object.vertices[0] << '\n';
-    for (size_t i = 0; i < object.vertices.size(); ++i) {
+    float scale = 1.0 + tp.value / 100.0;
+    size_t max_size = object.vertices.size();
+    for (size_t i = 0; i < max_size; ++i) {
       object.vertices[i] *= scale;
     }
   }

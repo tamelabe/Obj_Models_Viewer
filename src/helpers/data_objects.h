@@ -8,7 +8,7 @@ namespace s21 {
 
 struct GLObject {
  public:
-  std::vector<double> vertices{};
+  std::vector<float> vertices{};
   std::vector<unsigned> facets{};
 };
 
@@ -24,7 +24,7 @@ struct TransformParams {
    * x, y, z
    */
   char axis{};
-  double value{};
+  float value{};
 };
 
 struct BaseData {
@@ -43,12 +43,12 @@ struct ModelStateData {
 
 struct Edges {
  public:
-  double x_min{};
-  double y_min{};
-  double z_min{};
-  double x_max{};
-  double y_max{};
-  double z_max{};
+  float x_min{};
+  float y_min{};
+  float z_min{};
+  float x_max{};
+  float y_max{};
+  float z_max{};
 };
 
 

@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="Settings" name="w_settings" native="true">
+   <widget class="s21::Settings" name="w_settings" native="true">
     <property name="geometry">
      <rect>
       <x>1410</x>
@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="Info" name="w_info" native="true">
+   <widget class="s21::Info" name="w_info" native="true">
     <property name="geometry">
      <rect>
       <x>1410</x>
@@ -34,7 +34,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="Actions" name="w_actions" native="true">
+   <widget class="s21::Actions" name="w_actions" native="true">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -44,7 +44,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="OpenGLMod" name="w_scene" native="true">
+   <widget class="s21::OpenGLMod" name="w_scene" native="true">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -69,25 +69,25 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Settings</class>
+   <class>s21::Settings</class>
    <extends>QWidget</extends>
    <header>view/widgets/widget_settings.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>Info</class>
+   <class>s21::Info</class>
    <extends>QWidget</extends>
    <header>view/widgets/widget_info.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>Actions</class>
+   <class>s21::Actions</class>
    <extends>QWidget</extends>
    <header>view/widgets/widget_actions.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>OpenGLMod</class>
+   <class>s21::OpenGLMod</class>
    <extends>QWidget</extends>
    <header location="global">view/render/ogl_render.h</header>
    <container>1</container>

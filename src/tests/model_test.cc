@@ -15,7 +15,7 @@ TEST_F(ParserTest, VerticesTest) {
   std::string file_path = "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/skull.obj";
   parser.setFilepath(file_path);
   parser.parseFile();
-  std::vector<double> vert = parser.getVertices();
+  std::vector<float> vert = parser.getVertices();
   std::vector<unsigned> fac = parser.getFacets();
   for (size_t i = 2; i < 33; i += 3) {
     std::cout << vert[i - 2] << ' ' << vert[i - 1] << ' ' << vert[i] << '\n';

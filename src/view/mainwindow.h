@@ -11,6 +11,8 @@ namespace Ui {
 class MainWindow;
 }
 
+namespace s21 {
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -22,8 +24,10 @@ private slots:
     void updateView();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui_;
 };
+
+} // namespace s21
 
 #endif // MAINWINDOW_H
 

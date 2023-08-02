@@ -13,6 +13,8 @@ namespace Ui {
 class Actions;
 }
 
+namespace s21 {
+
 class Actions : public QWidget
 {
     Q_OBJECT
@@ -37,5 +39,7 @@ private slots:
     void loadFile();
     void rec();
 };
+
+} // namespace s21
 
 #endif // WIDGET_ACTIONS_H

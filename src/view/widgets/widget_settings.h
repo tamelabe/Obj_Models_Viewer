@@ -12,6 +12,8 @@ namespace Ui {
 class Settings;
 }
 
+namespace s21 {
+
 class Settings : public QWidget
 {
     Q_OBJECT
@@ -37,5 +39,7 @@ signals:
     void settingsUpdated();
 
 };
+
+} // namespace s21
 
 #endif // WIDGET_SETTINGS_H

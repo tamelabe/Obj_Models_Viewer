@@ -1,22 +1,26 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+namespace s21 {
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui_(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+    ui_->setupUi(this);
     this->setFixedSize(1680, 1070);
-    connect(ui->w_actions, &Actions::fileLoaded, this, &MainWindow::updateView);
-    connect(ui->w_settings, &Settings::settingsUpdated, this, &MainWindow::updateView);
+    connect(ui_->w_actions, &Actions::fileLoaded, this, &MainWindow::updateView);
+    connect(ui_->w_settings, &Settings::settingsUpdated, this, &MainWindow::updateView);
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    delete ui_;
 }
 
 void MainWindow::updateView()
 {
-    ui->w_scene->updateObject();
+    ui_->w_scene->updateObject();
 }
+
+} // namespace s21
