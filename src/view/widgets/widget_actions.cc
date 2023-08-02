@@ -1,6 +1,8 @@
 #include "widget_actions.h"
 #include "ui_widget_actions.h"
 
+#include <iostream>
+
 
 Actions::Actions(QWidget *parent) :
     QWidget(parent),
@@ -23,10 +25,13 @@ void Actions::connectButtons() {
 }
 
 void Actions::loadFile() {
-    QString fileQS = QFileDialog::getOpenFileName(this, tr("Load Model"),
-                                                       QDir::homePath(), tr("*.obj"));
-    if (fileQS.isEmpty()) return;
-    filepath_ = fileQS.toStdString();
+//    QString fileQS = QFileDialog::getOpenFileName(this, tr("Load Model"),
+//                                                       QDir::homePath(), tr("*.obj"));
+//    if (fileQS.isEmpty()) return;
+//    filepath_ = fileQS.toStdString();
+//    std::cout << filepath_ << '\n';
+    filepath_ = "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/skull.obj";
+//    filepath_ = "/Volumes/89823065724/Downloads/bugatti/bugatti.obj";
     controller_.setFilepath(filepath_);
     emit fileLoaded();
 }

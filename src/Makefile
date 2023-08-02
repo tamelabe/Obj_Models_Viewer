@@ -5,7 +5,7 @@ CPPFLAGS = -std=c++17 -pedantic -Wall -Werror -Wextra
 TEST_FLAGS = -lgtest --coverage
 LINUX_FLAGS = -lrt -lpthread -lm -lsubunit
 VG_FLAGS = CK_FORK=no valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all --verbose
-TESTS = ./tests/model_test.cc ./model/parser.h
+TESTS = ./tests/model_test.cc ./model/parser.h ./model/parser.cc
 CURRENT_DIR := $(abspath $(CURDIR))
 INSTALL_DIR ?= $(HOME)/Desktop
 

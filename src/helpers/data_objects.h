@@ -27,6 +27,31 @@ struct TransformParams {
   double value{};
 };
 
+struct BaseData {
+ public:
+  int x{};
+  int y{};
+  int z{};
+};
+
+struct ModelStateData {
+ public:
+  BaseData move;
+  BaseData rotate;
+  int scale{};
+};
+
+struct Edges {
+ public:
+  double x_min{};
+  double y_min{};
+  double z_min{};
+  double x_max{};
+  double y_max{};
+  double z_max{};
+};
+
+
 
 
 }  // namespace s21

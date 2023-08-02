@@ -5,35 +5,17 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include "../helpers/data_objects.h"
 
 namespace s21 {
-
 class Parser {
  public:
-  static Parser& getInstance() {
-    static Parser parser;
-    return parser;
-  }
+  static Parser& getInstance();
   std::vector<double> getVertices() { return vertices_; }
   std::vector<unsigned> getFacets() { return facets_; }
-  void setFilepath(const std::string& filepath) {
-    filepath_ = filepath;
-  }
-  void parseFile() {
-    removeData();
-    std::ifstream f_stream(filepath_);
-    std::string line;
-    reserveCapacity();
-    while (std::getline(f_stream, line)) {
-      if (line[0] == 'v' && line[1] == ' ') {
-        parseVertices(line);
-      } else if (line[0] == 'f' && line[1] == ' ') {
-        parseFacets(line);
-      }
-    }
-    f_stream.close();
-  }
-
+  void setFilepath(const std::string& filepath) { filepath_ = filepath; }
+  void parseFile();
+  
  private:
   Parser() = default;
   Parser(const Parser&) = delete;
@@ -42,60 +24,84 @@ class Parser {
   Parser& operator=(const Parser&) = delete;
   Parser& operator=(Parser&&) = delete;
 
+  int counter_{};
   std::string filepath_;
   std::vector<double> vertices_{};
   std::vector<unsigned> facets_{};
+  void removeData();
+  void parseVertices(const std::string& line);
+  void parseFacets(const std::string& line);
+  void createSurface(const std::vector<int> &raw);
+  void reserveCapacity();
+};
 
-  void removeData() {
-    vertices_.clear();
-    facets_.clear();
+class Normalizer {
+ public:
+  static Normalizer& getInstance() {
+    static Normalizer normalizer;
+    return normalizer;
   }
-
-  void parseVertices(const std::string& line) {
-    size_t size = line.size();
-    for (size_t i = 2; i < size; ++i) {
-      if (line[i - 1] == ' ' && (std::isdigit(line[i]) || line[i] == '-'))
-        vertices_.push_back(std::stod(line.substr(i - 1)));
+  
+  void setObject(const GLObject &object) {
+    object_ = object;
+  }
+  
+  void normalize() {
+    findEdges();
+    std::vector<double> center{ findCenter('x'), findCenter('y'), findCenter('z') };
+    for (size_t i = 0; i < object_.vertices.size(); i += 3) {
+      object_.vertices[i] -= center[i % 3];
     }
   }
 
-  void parseFacets(const std::string& line) {
-    size_t size = line.size();
-    std::vector<int> raw_surface;
-    raw_surface.reserve(3);
-    for (size_t i = 2; i < size; ++i) {
-      if (line[i - 1] == ' ' && std::isdigit(line[i]))
-        raw_surface.push_back(std::stoi(line.substr(i - 1)) - 1);
-    }
-    createSurface(raw_surface);
+  GLObject getObject() {
+    return object_;
   }
 
-  void createSurface(const std::vector<int> &raw) {
-    size_t size = raw.size() - 1;
-    for (size_t i = 0; i < size; ++i) {
-      facets_.push_back(raw[i]);
-      facets_.push_back(raw[i + 1]);
+ private:
+  Normalizer() = default;
+  Normalizer(const Normalizer&) = delete;
+  Normalizer(Normalizer&&) = delete;
+  ~Normalizer() = default;
+  Normalizer& operator=(const Normalizer&) = delete;
+  Normalizer& operator=(Normalizer&&) = delete;
+
+  Edges edges_;
+  double scale_{};
+  GLObject object_;
+
+  void findEdges() {
+    size_t i = 0;
+    while (i < object_.vertices.size() - 2) {
+      if (edges_.x_min > object_.vertices[i]) edges_.x_min = object_.vertices[i];
+      if (edges_.x_max < object_.vertices[i]) edges_.x_max = object_.vertices[i];
+      ++i;
+      if (edges_.y_min > object_.vertices[i]) edges_.y_min = object_.vertices[i];
+      if (edges_.y_max < object_.vertices[i]) edges_.y_max = object_.vertices[i];
+      ++i;
+      if (edges_.z_min > object_.vertices[i]) edges_.z_min = object_.vertices[i];
+      if (edges_.z_max < object_.vertices[i]) edges_.z_max = object_.vertices[i];
+      ++i;
     }
-    facets_.push_back(raw[size]);
-    facets_.push_back(raw[0]);
   }
 
-  void reserveCapacity() {
-    std::string line;
-    size_t v_count = 0, f_count = 0;
-    std::ifstream stream(filepath_);
-    while (std::getline(stream, line)) {
-      if (line[0] == 'v' && line[1] == ' ') {
-        ++v_count;
-      } else if (line[0] == 'f' && line[1] == ' ') {
-        ++f_count;
-      }
+  double findCenter(char axis) {
+    double min{}, max{};
+    if (axis == 'x') {
+      min = edges_.x_min;
+      max = edges_.x_max;
+    } else if (axis == 'y') {
+      min = edges_.y_min;
+      max = edges_.y_max;
+    } else if (axis == 'z') {
+      min = edges_.z_min;
+      max = edges_.z_max;
     }
-    vertices_.reserve(v_count);
-    facets_.reserve(f_count * 2);
-    stream.close();
+    return min + (max - min) / 2;
   }
 };
+
+
 
 } // namespace s21
 

@@ -15,11 +15,15 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets OpenGLWidgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGLWidgets)
 set(PROJECT_SOURCES
         main.cc
-#        model/model.h
+        model/model.h
 #        model/model.cc
-#        model/parser.h
-#        model/parser.cc
-#        controller/controller.h
+        model/parser.h
+        model/parser.cc
+        model/affine.h
+        model/affine.cc
+        model/base_movement.h
+        model/base_movement.cc
+        controller/controller.h
         view/mainwindow.cc
         view/mainwindow.h
         view/mainwindow.ui
@@ -32,6 +36,9 @@ set(PROJECT_SOURCES
         view/widgets/widget_actions.cc
         view/widgets/widget_actions.h
         view/widgets/widget_actions.ui
+        view/widgets/spinbox_slider.cc
+        view/widgets/spinbox_slider.h
+        view/widgets/spinbox_slider.ui
         view/render/ogl_render.cc
         view/render/ogl_render.h
         helpers/data_objects.h

@@ -35,7 +35,7 @@ class OpenGLMod : public QOpenGLWidget {
     void updateObject() {
         object_ = controller_.getObject();
         std::cout << "OBJ LOADED" << object_.facets.size() << '\n';
-        paintGL();
+        update();
     }
 
  private:
@@ -69,20 +69,20 @@ class OpenGLMod : public QOpenGLWidget {
   }
 
   void drawObject() {
-          glPointSize(3);
+          glPointSize(5);
 
           glVertexPointer(3, GL_DOUBLE, 0, object_.vertices.data());
           glEnableClientState(GL_VERTEX_ARRAY);
-//          glLineWidth(2);
+          glLineWidth(2);
 
-//          glDisable(GL_POINT_SMOOTH);
-//          glEnable(GL_POINT_SPRITE);
+          glDisable(GL_POINT_SMOOTH);
+          glEnable(GL_POINT_SPRITE);
 
 //          glColor4d(edge_red, edge_green, edge_blue, edge_alpha);
 
-//          glDisable(GL_LINE_STIPPLE);
+          glDisable(GL_LINE_STIPPLE);
 
-          glDrawElements(GL_LINES, object_.vertices.size(), GL_UNSIGNED_INT, object_.facets.data());
+          glDrawElements(GL_LINES, object_.facets.size(), GL_UNSIGNED_INT, object_.facets.data());
 
           glDisableClientState(GL_VERTEX_ARRAY);
 

@@ -16,6 +16,7 @@ class Controller {
 
   void setFilepath(const std::string& filepath) { model_.setFilepath(filepath); }
   GLObject getObject() { return model_.getObject(); }
+  void changeObjectState(const TransformParams& tp) { model_.changeObjState(tp); }
 
  private:
 
