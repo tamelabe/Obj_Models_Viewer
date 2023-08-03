@@ -1,6 +1,10 @@
 #include <gtest/gtest.h>
 
-#include "../model/parser.h"
+#include "../model/model.h"
+#include "../model/opening/parser.h"
+#include "../model/opening/normalizer.h"
+#include "../model/processing/transformer.h"
+#include "../model/processing/base_movement.h"
 
 #include <iostream>
 
@@ -8,23 +12,77 @@ using namespace s21;
 
 class ParserTest : public testing::Test {
  protected:
-  Parser& parser = Parser::getInstance();
+  Model& model_ = Model::getInstance();
+  const GLObject* object_;
+  TransformParams tp_;
+  std::string cube_path_ = "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/cube.obj";
+  std::string skull_path_ = "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/skull.obj";
+  std::string cow_path_ = "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/Cow.obj";
 };
 
-TEST_F(ParserTest, VerticesTest) {
-  std::string file_path = "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/skull.obj";
-  parser.setFilepath(file_path);
-  parser.parseFile();
-  std::vector<float> vert = parser.getVertices();
-  std::vector<unsigned> fac = parser.getFacets();
-  for (size_t i = 2; i < 33; i += 3) {
-    std::cout << vert[i - 2] << ' ' << vert[i - 1] << ' ' << vert[i] << '\n';
-  }
-  std::cout << "FACETS:\n";
-  for (size_t i = 5; i < 33; i += 6) {
-    std::cout << fac[i - 5]+1 << ' ' << fac[i - 4]+1 << ' ' << fac[i-3]+1 << ' ';
-    std::cout << fac[i - 2]+1 << ' ' << fac[i - 1]+1 << ' ' << fac[i]+1 << '\n';
-  }
+TEST_F(ParserTest, DataTest) {
+  model_.setFilepath(cube_path_);
+  object_ = &model_.getObject();
+  EXPECT_EQ(object_->getFile(), "cube.obj");
+  EXPECT_EQ(object_->getVertices(), 8);
+  EXPECT_EQ(object_->getEdges(), 30);
+}
+
+TEST_F(ParserTest, MoveTest) {
+model_.setFilepath(skull_path_);
+object_ = &model_.getObject();
+float prev = object_->vertices[0];
+  tp_.value = 180;
+  tp_.pos_type = 'm';
+  tp_.axis = 'x';
+  model_.changeObjState(tp_);
+tp_.axis = 'y';
+model_.changeObjState(tp_);
+tp_.axis = 'z';
+model_.changeObjState(tp_);
+  tp_.value = -180;
+model_.changeObjState(tp_);
+tp_.axis = 'x';
+model_.changeObjState(tp_);
+tp_.axis = 'y';
+model_.changeObjState(tp_);
+EXPECT_NEAR(prev, object_->vertices[0], 1e-5);
+}
+
+TEST_F(ParserTest, RotateTest) {
+model_.setFilepath(skull_path_);
+object_ = &model_.getObject();
+float prev = object_->vertices[0];
+tp_.value = 180;
+tp_.pos_type = 'r';
+tp_.axis = 'x';
+model_.changeObjState(tp_);
+tp_.axis = 'y';
+model_.changeObjState(tp_);
+tp_.axis = 'z';
+model_.changeObjState(tp_);
+EXPECT_NEAR(prev, object_->vertices[0], 1e-5);
+}
+
+TEST_F(ParserTest, ScaleTest) {
+model_.setFilepath(cow_path_);
+object_ = &model_.getObject();
+float prev = object_->vertices[0];
+tp_.value = 200;
+tp_.pos_type = 's';
+tp_.axis = 'x';
+model_.changeObjState(tp_);
+tp_.axis = 'y';
+model_.changeObjState(tp_);
+tp_.axis = 'z';
+model_.changeObjState(tp_);
+tp_.value = -200;
+model_.changeObjState(tp_);
+tp_.axis = 'x';
+model_.changeObjState(tp_);
+tp_.axis = 'y';
+model_.changeObjState(tp_);
+EXPECT_NEAR(prev, object_->vertices[0], 1e-5);
 }
 
 int main(int argc, char *argv[]) {

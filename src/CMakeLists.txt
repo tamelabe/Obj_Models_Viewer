@@ -24,7 +24,6 @@ set(PROJECT_SOURCES
         model/opening/normalizer.h
         model/processing/base_movement.cc
         model/processing/base_movement.h
-        model/processing/transformer.cc
         model/processing/transformer.h
         controller/controller.h
         view/mainwindow.cc
