@@ -12,7 +12,7 @@ class GLObject {
   GLObject() = default;
   ~GLObject() = default;
   int getVertices() const { return vertices.size() / 3; }
-  int getEdges() const { return (facets.size() / 2) - (vertices.size() / 3) + 2; }
+  int getEdges() const { return (facets.size() / 6) + (vertices.size() / 3) - 2; }
   std::string getFile() const {
     std::filesystem::path filePath(filepath);
     return filePath.filename().string();
