@@ -2,8 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <iostream>
-
 #include "../model/opening/normalizer.h"
 #include "../model/opening/parser.h"
 #include "../model/processing/base_movement.h"

@@ -23,6 +23,7 @@ void Normalizer::clearEdges() {
   edges_.x_max = edges_.x_min = 0;
   edges_.y_max = edges_.y_min = 0;
   edges_.z_max = edges_.z_min = 0;
+  scale_ = 0;
 }
 
 void Normalizer::findEdges() {

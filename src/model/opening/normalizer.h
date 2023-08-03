@@ -22,7 +22,6 @@ class Normalizer {
  private:
   Edges edges_;
   float scale_{};
-  //  std::vector<float> center_{};
   GLObject* object_ = nullptr;
 
   void findEdges();

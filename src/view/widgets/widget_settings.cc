@@ -1,7 +1,5 @@
 #include "widget_settings.h"
 
-#include <iostream>
-
 #include "ui_widget_settings.h"
 
 namespace s21 {

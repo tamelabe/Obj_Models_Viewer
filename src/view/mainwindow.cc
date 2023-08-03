@@ -14,6 +14,9 @@ MainWindow::MainWindow(QWidget *parent)
   });
   connect(ui_->w_settings, &Settings::settingsUpdated, this,
           &MainWindow::updateView);
+  connect(ui_->w_actions, &Actions::resetConfig, this,[=]() {
+      ui_->w_settings->setDefault();
+  });
 }
 
 MainWindow::~MainWindow() { delete ui_; }

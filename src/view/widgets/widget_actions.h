@@ -33,6 +33,7 @@ class Actions : public QWidget {
 
  signals:
   void fileLoaded();
+  void resetConfig();
 
  private slots:
   void loadFile();

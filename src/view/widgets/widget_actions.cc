@@ -1,7 +1,5 @@
 #include "widget_actions.h"
 
-#include <iostream>
-
 #include "ui_widget_actions.h"
 
 namespace s21 {
@@ -28,6 +26,7 @@ void Actions::loadFile() {
       this, tr("Load Model"), QDir::currentPath(), tr("*.obj"));
   if (fileQS.isEmpty()) return;
   filepath_ = fileQS.toStdString();
+  emit resetConfig();
   controller_.setFilepath(filepath_);
   emit fileLoaded();
 }
