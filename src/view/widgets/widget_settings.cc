@@ -72,7 +72,20 @@ void Settings::connectButtons() {
   });
 }
 
+void Settings::setDefault() {
+  ui_->sb_moving_x->setValue(0);
+  ui_->sb_moving_y->setValue(0);
+  ui_->sb_moving_z->setValue(0);
+  ui_->sb_rotate_x->setValue(0);
+  ui_->sb_rotate_y->setValue(0);
+  ui_->sb_rotate_z->setValue(0);
+  ui_->sb_scale->setValue(0);
+}
+
 void Settings::movement(char pos_type, int value, char axis) {
+  if (controller_.getObject().facets.empty() ||
+      controller_.getObject().vertices.empty())
+    return;
   tp_.pos_type = pos_type;
   tp_.axis = axis;
   int prev_value = updateState(pos_type, axis, value);

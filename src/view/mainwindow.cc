@@ -8,7 +8,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui_(new Ui::MainWindow) {
   ui_->setupUi(this);
   this->setFixedSize(1680, 1070);
-  connect(ui_->w_actions, &Actions::fileLoaded, this, &MainWindow::updateView);
+  connect(ui_->w_actions, &Actions::fileLoaded, this, [=]() {
+    updateView();
+    ui_->w_settings->setDefault();
+  });
   connect(ui_->w_settings, &Settings::settingsUpdated, this,
           &MainWindow::updateView);
 }

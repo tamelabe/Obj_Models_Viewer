@@ -20,6 +20,7 @@ class Settings : public QWidget {
  public:
   Settings(QWidget *parent = nullptr);
   ~Settings();
+  void setDefault();
 
  private:
   Ui::Settings *ui_;

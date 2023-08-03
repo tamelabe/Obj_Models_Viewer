@@ -8,6 +8,7 @@ void Normalizer::setObjectRef(GLObject &object) {
 }
 
 void Normalizer::normalize() {
+  if (object_->facets.empty() || object_->vertices.empty()) return;
   findEdges();
   std::vector<float> center{findCenter('x'), findCenter('y'), findCenter('z')};
   size_t max_size = object_->vertices.size();

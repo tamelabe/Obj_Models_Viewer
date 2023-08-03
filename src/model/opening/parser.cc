@@ -27,6 +27,7 @@ void Parser::parseFile() {
 void Parser::removeData() {
   vertices_->clear();
   facets_->clear();
+  counter_ = 0;
 }
 
 void Parser::parseVertices(const std::string& line) {
