@@ -15,7 +15,7 @@ all: clean install
 
 install: clean
 	mkdir build
-	cd build && cmake ../CMakeLists.txt
+	cd build && cmake ../CMakeLists.txt && make
 ifeq ($(OS),Darwin)
 	mv ./build/3DViewer.app "$(INSTALL_DIR)"
 else
@@ -35,7 +35,7 @@ clean:
 	@rm -rf ../*.idea ../.run ../*.dSYM
 	@rm -rf *.a *.o
 	@rm -rf build/*
-	@rm -rf *.user
+	@rm -rf *.user ./--main main.tar.gz
 
 dvi:
 ifeq ($(OS),Darwin)
@@ -82,9 +82,9 @@ endif
 
 open:
 ifeq ($(OS),Darwin)
-	open $(INSTALL_DIR)/TameCalc.app
+	open $(INSTALL_DIR)/3DViewer.app
 else
-	xdg-open $(INSTALL_DIR)/TameCalc
+	xdg-open $(INSTALL_DIR)/3DViewer
 endif
 
 download:

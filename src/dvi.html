@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>3D Viewer Program</title>
+</head>
+<body>
+<h1>3D Viewer Program</h1>
+<h3>by tamelabe, shoredim</h3>
+<p>
+    The 3D Viewer Program is a graphical application that allows you to load and manipulate wireframe models from OBJ files. It provides various features for translating, rotating, and scaling the loaded model, and presents a user-friendly interface to interact with the 3D model.
+</p>
+<h2>Features:</h2>
+<ul>
+    <li>Load a wireframe model from an OBJ file (supports vertices and surfaces list only).</li>
+    <li>Translate the model by a given distance along the X, Y, and Z axes.</li>
+    <li>Rotate the model by a given angle around its X, Y, and Z axes.</li>
+    <li>Scale the model by a given value.</li>
+    <li>GUI implementation based on the <i>Qt</i> library for C++.</li>
+    <li>Visualization area for the wireframe model.</li>
+    <li>Controls for translating, rotating, and scaling the model.</li>
+    <li>Displays information about the uploaded model - file name, number of vertices, and edges.</li>
+</ul>
+<h2>Performance:</h2>
+<p>
+    The program efficiently handles models with varying levels of complexity, ranging from a few vertices to up to a million vertices, without any freezing or interface inactivity for more than 0.5 seconds.
+</p>
+<h2>Implementation Details:</h2>
+<p>
+    The program follows the Model-View-Controller (MVC) pattern to ensure separation of concerns. The business logic is kept in the model, while the view is responsible for displaying the data to the user. The controllers act as intermediaries between the model and view, ensuring a thin controller architecture.
+</p>
+<h2>Design Patterns Used:</h2>
+<p>
+    The 3D Viewer Program incorporates several design patterns to enhance its structure and maintainability, including Facade, Strategy, and Singleton patterns.
+</p>
+<h2>Usage:</h2>
+<p>
+    To use the 3D Viewer Program, simply load your wireframe model from an OBJ file using the "Load Model" button. Once the model is loaded, you can perform translation, rotation, and scaling operations using the respective controls provided in the interface.
+</p>
+</body>
+</html>
