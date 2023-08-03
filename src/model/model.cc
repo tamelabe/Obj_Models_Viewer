@@ -2,7 +2,7 @@
 
 namespace s21 {
 
-Model& Model::getInstance() {
+Model &Model::getInstance() {
   static Model model;
   return model;
 }
@@ -26,5 +26,4 @@ void Model::changeObjState(const TransformParams &tp) {
   transform_.execute(tp, object_);
 }
 
-} // namespace s21
-
+}  // namespace s21

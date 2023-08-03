@@ -30,7 +30,7 @@ void Rotate::execute(const TransformParams &tp, GLObject &object) {
 
   size_t max_size = object.vertices.size() + i_def - 2;
   size_t axis_1{}, axis_2{};
-  float value  = tp.value * 3.141592653589 / 180;
+  float value = tp.value * 3.141592653589 / 180;
   float vert_1{}, vert_2{};
   for (size_t i = i_def; i < max_size; i += 3) {
     axis_1 = i + incr_1;
@@ -38,21 +38,21 @@ void Rotate::execute(const TransformParams &tp, GLObject &object) {
     vert_1 = object.vertices[axis_1];
     vert_2 = object.vertices[axis_2];
 
-    object.vertices[axis_1] = std::cos(value) * vert_1 - std::sin(value) * vert_2;
-    object.vertices[axis_2] = std::cos(value) * vert_2 + std::sin(value) * vert_1;
+    object.vertices[axis_1] =
+        std::cos(value) * vert_1 - std::sin(value) * vert_2;
+    object.vertices[axis_2] =
+        std::cos(value) * vert_2 + std::sin(value) * vert_1;
   }
 }
 
 void Scale::execute(const TransformParams &tp, GLObject &object) {
   float scale = 1.0 + std::fabs(tp.value) / 100.0;
   size_t max_size = object.vertices.size();
-  if (tp.value  > 0) {
-    for (size_t i = 0; i < max_size; ++i)
-      object.vertices[i] *= scale;
+  if (tp.value > 0) {
+    for (size_t i = 0; i < max_size; ++i) object.vertices[i] *= scale;
   } else {
-    for (size_t i = 0; i < max_size; ++i)
-      object.vertices[i] /= scale;
+    for (size_t i = 0; i < max_size; ++i) object.vertices[i] /= scale;
   }
 }
 
-} // namespace s21
+}  // namespace s21

@@ -1,13 +1,14 @@
 #ifndef WIDGET_ACTIONS_H
 #define WIDGET_ACTIONS_H
 
-#include "controller/controller.h"
-#include <QWidget>
-#include <QFileDialog>
 #include <QDir>
+#include <QFileDialog>
+#include <QWidget>
 #include <string>
 
-//#include "../../controller/controller.h"
+#include "controller/controller.h"
+
+// #include "../../controller/controller.h"
 
 namespace Ui {
 class Actions;
@@ -15,31 +16,29 @@ class Actions;
 
 namespace s21 {
 
-class Actions : public QWidget
-{
-    Q_OBJECT
+class Actions : public QWidget {
+  Q_OBJECT
 
-public:
-    explicit Actions(QWidget *parent = nullptr);
-    ~Actions();
+ public:
+  explicit Actions(QWidget *parent = nullptr);
+  ~Actions();
 
-private:
-    Ui::Actions *ui_;
-    std::string filepath_;
-    s21::Controller& controller_ = s21::Controller::getInstance();
+ private:
+  Ui::Actions *ui_;
+  std::string filepath_;
+  s21::Controller &controller_ = s21::Controller::getInstance();
 
-    void connectButtons();
-    void savePic(char type);
+  void connectButtons();
+  void savePic(char type);
 
-signals:
-    void fileLoaded();
+ signals:
+  void fileLoaded();
 
-
-private slots:
-    void loadFile();
-    void rec();
+ private slots:
+  void loadFile();
+  void rec();
 };
 
-} // namespace s21
+}  // namespace s21
 
-#endif // WIDGET_ACTIONS_H
+#endif  // WIDGET_ACTIONS_H

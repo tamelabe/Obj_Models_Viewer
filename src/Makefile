@@ -70,7 +70,7 @@ endif
 
 check:
 	cp ../materials/linters/.clang-format .
-	find . -type f \( -name "*.cc" -o -name "*.h" \) -exec clang-format -i --style="Google" {} \;
+	find . -type f \( -name "*.cc" -o -name "*.h" \) -exec clang-format -n --style="Google" {} \;
 	rm -f .clang-format
 
 leaks:

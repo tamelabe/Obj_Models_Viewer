@@ -9,7 +9,7 @@ void Normalizer::setObjectRef(GLObject &object) {
 
 void Normalizer::normalize() {
   findEdges();
-  std::vector<float> center{ findCenter('x'), findCenter('y'), findCenter('z') };
+  std::vector<float> center{findCenter('x'), findCenter('y'), findCenter('z')};
   size_t max_size = object_->vertices.size();
   findScale(findMaxDistance());
   for (size_t i = 0; i < max_size; ++i) {
@@ -27,14 +27,20 @@ void Normalizer::clearEdges() {
 void Normalizer::findEdges() {
   size_t i = 0;
   while (i < object_->vertices.size() - 2) {
-    if (edges_.x_min > object_->vertices[i]) edges_.x_min = object_->vertices[i];
-    if (edges_.x_max < object_->vertices[i]) edges_.x_max = object_->vertices[i];
+    if (edges_.x_min > object_->vertices[i])
+      edges_.x_min = object_->vertices[i];
+    if (edges_.x_max < object_->vertices[i])
+      edges_.x_max = object_->vertices[i];
     ++i;
-    if (edges_.y_min > object_->vertices[i]) edges_.y_min = object_->vertices[i];
-    if (edges_.y_max < object_->vertices[i]) edges_.y_max = object_->vertices[i];
+    if (edges_.y_min > object_->vertices[i])
+      edges_.y_min = object_->vertices[i];
+    if (edges_.y_max < object_->vertices[i])
+      edges_.y_max = object_->vertices[i];
     ++i;
-    if (edges_.z_min > object_->vertices[i]) edges_.z_min = object_->vertices[i];
-    if (edges_.z_max < object_->vertices[i]) edges_.z_max = object_->vertices[i];
+    if (edges_.z_min > object_->vertices[i])
+      edges_.z_min = object_->vertices[i];
+    if (edges_.z_max < object_->vertices[i])
+      edges_.z_max = object_->vertices[i];
     ++i;
   }
 }
@@ -55,20 +61,18 @@ float Normalizer::findCenter(char axis) {
 }
 
 float Normalizer::findMaxDistance() {
-    float avg_x = edges_.x_max - edges_.x_min;
-    float avg_y = edges_.y_max - edges_.y_min;
-    float avg_z = edges_.z_max - edges_.z_min;
-    if (avg_x > avg_y && avg_x > avg_z) {
-        return avg_x;
-    } else if (avg_y > avg_x && avg_y > avg_z) {
-        return avg_y;
-    } else {
-        return avg_z;
-    }
+  float avg_x = edges_.x_max - edges_.x_min;
+  float avg_y = edges_.y_max - edges_.y_min;
+  float avg_z = edges_.z_max - edges_.z_min;
+  if (avg_x > avg_y && avg_x > avg_z) {
+    return avg_x;
+  } else if (avg_y > avg_x && avg_y > avg_z) {
+    return avg_y;
+  } else {
+    return avg_z;
+  }
 }
 
-void Normalizer::findScale(float max_dist) {
-    scale_ = (4 / max_dist);
-}
+void Normalizer::findScale(float max_dist) { scale_ = (4 / max_dist); }
 
-} // namespace s21
+}  // namespace s21

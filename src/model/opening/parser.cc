@@ -2,7 +2,7 @@
 
 namespace s21 {
 
-void Parser::setObjectRef(GLObject &object) {
+void Parser::setObjectRef(GLObject& object) {
   vertices_ = &object.vertices;
   facets_ = &object.facets;
   filepath_ = object.filepath;
@@ -52,7 +52,7 @@ void Parser::parseFacets(const std::string& line) {
   createSurface(raw_surface);
 }
 
-void Parser::createSurface(const std::vector<int> &raw) {
+void Parser::createSurface(const std::vector<int>& raw) {
   size_t size = raw.size() - 1;
   for (size_t i = 0; i < size; ++i) {
     facets_->push_back(raw[i]);
@@ -78,4 +78,4 @@ void Parser::reserveCapacity() {
   stream.close();
 }
 
-} // namespace s21
+}  // namespace s21

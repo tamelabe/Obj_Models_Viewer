@@ -1,8 +1,8 @@
 #ifndef SRC_MODEL_MODEL_H_
 #define SRC_MODEL_MODEL_H_
 
-#include "./opening/parser.h"
 #include "./opening/normalizer.h"
+#include "./opening/parser.h"
 #include "./processing/transformer.h"
 
 namespace s21 {
@@ -13,7 +13,7 @@ class Model {
 
   const GLObject& getObject() const { return object_; }
   void setFilepath(const std::string& filepath);
-  void changeObjState(const TransformParams &tp);
+  void changeObjState(const TransformParams& tp);
 
  private:
   Model() = default;
@@ -29,6 +29,6 @@ class Model {
   Transformer transform_;
 };
 
-} // namespace s21
+}  // namespace s21
 
-#endif //  SRC_MODEL_MODEL_H_
+#endif  //  SRC_MODEL_MODEL_H_

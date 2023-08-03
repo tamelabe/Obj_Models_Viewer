@@ -1,9 +1,9 @@
 #ifndef SRC_DATA_OBJECTS_H_
 #define SRC_DATA_OBJECTS_H_
 
+#include <filesystem>
 #include <string>
 #include <vector>
-#include <filesystem>
 
 namespace s21 {
 
@@ -60,9 +60,6 @@ struct Edges {
   float y_max{};
   float z_max{};
 };
-
-
-
 
 }  // namespace s21
 

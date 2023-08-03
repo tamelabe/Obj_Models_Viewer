@@ -1,9 +1,9 @@
 #ifndef SRC_MODEL_PARSER_H_
 #define SRC_MODEL_PARSER_H_
 
-#include <vector>
 #include <fstream>
 #include <string>
+#include <vector>
 
 #include "../../helpers/data_objects.h"
 
@@ -18,9 +18,9 @@ class Parser {
   Parser& operator=(const Parser&) = delete;
   Parser& operator=(Parser&&) = delete;
 
-  void setObjectRef(GLObject &object);
+  void setObjectRef(GLObject& object);
   void parseFile();
-  
+
  private:
   int counter_{};
   std::string filepath_;
@@ -29,11 +29,10 @@ class Parser {
   void removeData();
   void parseVertices(const std::string& line);
   void parseFacets(const std::string& line);
-  void createSurface(const std::vector<int> &raw);
+  void createSurface(const std::vector<int>& raw);
   void reserveCapacity();
 };
 
-} // namespace s21
+}  // namespace s21
 
-
-#endif //  SRC_MODEL_PARSER_H_
+#endif  //  SRC_MODEL_PARSER_H_
