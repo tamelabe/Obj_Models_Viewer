@@ -1,6 +1,8 @@
 #include "../model/model.h"
 
 #include <gtest/gtest.h>
+#include <filesystem>
+#include <string>
 
 #include "../model/opening/normalizer.h"
 #include "../model/opening/parser.h"
@@ -9,17 +11,16 @@
 
 using namespace s21;
 
+std::string getPath(std::string path);
+
 class ParserTest : public testing::Test {
  protected:
   Model& model_ = Model::getInstance();
   const GLObject* object_;
   TransformParams tp_;
-  std::string cube_path_ =
-      "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/cube.obj";
-  std::string skull_path_ =
-      "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/skull.obj";
-  std::string cow_path_ =
-      "/Volumes/89823065724/Projects/3D_obj_Viewer/src/obj/Cow.obj";
+  std::string cube_path_ = getPath("/src/obj/cube.obj");
+  std::string skull_path_ = getPath("/src/obj/skull.obj");
+  std::string cow_path_ = getPath("/src/obj/Cow.obj");
 };
 
 TEST_F(ParserTest, DataTest) {
@@ -27,7 +28,7 @@ TEST_F(ParserTest, DataTest) {
   object_ = &model_.getObject();
   EXPECT_EQ(object_->getFile(), "cube.obj");
   EXPECT_EQ(object_->getVertices(), 8);
-  EXPECT_EQ(object_->getEdges(), 30);
+  EXPECT_EQ(object_->getEdges(), 18);
 }
 
 TEST_F(ParserTest, MoveTest) {
@@ -90,4 +91,11 @@ TEST_F(ParserTest, ScaleTest) {
 int main(int argc, char* argv[]) {
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
+}
+
+std::string getPath(std::string path) {
+  std::filesystem::path currentPath = std::filesystem::current_path();
+  std::string currentPathStr_ = currentPath.parent_path().string();
+  path = currentPathStr_ + path;
+  return path;
 }

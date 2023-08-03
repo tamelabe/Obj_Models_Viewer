@@ -51,7 +51,7 @@ dist: clean
 	tar -cvzf 3DViewer.tar.gz 3DViewer
 	rm -rf 3DViewer
 
-tests:
+tests: download
 ifeq ($(OS),Darwin)
 	$(CC) $(CPPFLAGS) $(TESTS) -o test.o $(TEST_FLAGS);
 else
