@@ -25,8 +25,14 @@ class OpenGLMod : public QOpenGLWidget {
   ~OpenGLMod() {}
 
   void updateObject();
+  void setRedBG(float red_bg) { red_bg_ = red_bg; };
+  void setGreenBG(float green_bg) { green_bg_ = green_bg; };
+  void setBlueBG(float blue_bg) { blue_bg_ = blue_bg; };
+  void setAlphaBG(float alpha_bg) { alpha_bg_ = alpha_bg; };
 
  private:
+  float red_bg_, green_bg_, blue_bg_, alpha_bg_;
+
   const s21::GLObject* object_ = nullptr;
   s21::Controller& controller_ = s21::Controller::getInstance();
 

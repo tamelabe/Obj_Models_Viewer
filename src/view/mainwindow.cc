@@ -26,4 +26,12 @@ void MainWindow::updateView() {
   ui_->w_info->updateInfo();
 }
 
+void MainWindow::on_bt_bg_color_clicked() {
+    QColor BG_color = QColorDialog::getColor();
+    ui_->w_scene->setRedBG(static_cast<float>(BG_color.red()));
+    ui_->w_scene->setGreenBG(static_cast<float>(BG_color.green()));
+    ui_->w_scene->setBlueBG(static_cast<float>(BG_color.blue()));
+    ui_->w_scene->setAlphaBG(static_cast<float>(BG_color.alpha()));
+}
+
 }  // namespace s21

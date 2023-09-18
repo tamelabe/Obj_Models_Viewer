@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QColorDialog>
 
 #include "render/ogl_render.h"
 #include "widgets/widget_actions.h"
@@ -22,6 +23,7 @@ class MainWindow : public QMainWindow {
   ~MainWindow();
  private slots:
   void updateView();
+  void on_bt_bg_color_clicked();
 
  private:
   Ui::MainWindow *ui_;

@@ -29,6 +29,7 @@ void OpenGLMod::resizeGL(int w, int h) {
 }
 
 void OpenGLMod::paintGL() {
+  glClearColor(red_bg_ / 255.0f, green_bg_ / 255.0f, blue_bg_ / 255.0f, alpha_bg_);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
