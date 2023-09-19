@@ -27,10 +27,13 @@ class OpenGLMod : public QOpenGLWidget {
   void updateObject();
 
   void setBackgroundColor(QColor color_bg) { color_bg_ = color_bg; };
-  QColor backgroundColor();
+  QColor getBackgroundColor() { return color_bg_; };
+  void setLineColor(QColor color_line) { color_line_ = color_line; };
+  QColor getLineColor() { return color_line_; };
 
  private:
   QColor color_bg_;
+  QColor color_line_;
 
   const s21::GLObject* object_ = nullptr;
   s21::Controller& controller_ = s21::Controller::getInstance();

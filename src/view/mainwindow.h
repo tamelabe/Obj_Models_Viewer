@@ -27,6 +27,7 @@ class MainWindow : public QMainWindow {
  private slots:
   void updateView();
   void on_bt_bg_color_clicked();
+  void on_bt_line_color_clicked();
 
  private:
   Ui::MainWindow *ui_;

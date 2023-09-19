@@ -11,6 +11,7 @@ void OpenGLMod::initializeGL() {
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
   color_bg_ = QColor(40, 40, 40, 255);
+  color_line_ = QColor(255, 255, 255, 255);
 }
 
 void OpenGLMod::resizeGL(int w, int h) {
@@ -29,14 +30,9 @@ void OpenGLMod::resizeGL(int w, int h) {
   glOrtho(left, right, bottom, top, -100, 100);
 }
 
-QColor OpenGLMod::backgroundColor() {
-  QPalette palette = this->palette();
-  QColor background_color = palette.color(this->backgroundRole());
-  return background_color;
-}
 void OpenGLMod::paintGL() {
-//  glClearColor(red_bg_ / 255.0f, green_bg_ / 255.0f, blue_bg_ / 255.0f, alpha_bg_);
   glClearColor(color_bg_.redF(), color_bg_.greenF(), color_bg_.blueF(), color_bg_.alphaF());
+  glColor4f(color_line_.redF(), color_line_.greenF(), color_line_.blueF(), color_line_.alphaF());
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();

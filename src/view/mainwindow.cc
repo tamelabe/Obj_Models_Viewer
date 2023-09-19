@@ -39,10 +39,21 @@ void MainWindow::updateView() {
 void MainWindow::on_bt_bg_color_clicked() {
   QColorDialog dialog(this);
   dialog.setWindowTitle("Выберите цвет заднего фона");
-  dialog.setCurrentColor(ui_->w_scene->backgroundColor());
+  dialog.setCurrentColor(ui_->w_scene->getBackgroundColor());
   if (dialog.exec() == QDialog::Accepted) {
     QColor color = dialog.selectedColor();
     ui_->w_scene->setBackgroundColor(color);
+    ui_->w_scene->update();
+  }
+}
+
+void MainWindow::on_bt_line_color_clicked() {
+  QColorDialog dialog(this);
+  dialog.setWindowTitle("Выберите цвет ребер");
+  dialog.setCurrentColor(ui_->w_scene->getLineColor());
+  if (dialog.exec() == QDialog::Accepted) {
+    QColor color = dialog.selectedColor();
+    ui_->w_scene->setLineColor(color);
     ui_->w_scene->update();
   }
 }
