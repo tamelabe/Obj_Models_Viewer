@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QColorDialog>
+#include <QKeyEvent>
 
 #include "render/ogl_render.h"
 #include "widgets/widget_actions.h"
@@ -21,6 +22,8 @@ class MainWindow : public QMainWindow {
  public:
   explicit MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
+  void keyPressEvent(QKeyEvent *event) override;
+
  private slots:
   void updateView();
   void on_bt_bg_color_clicked();
