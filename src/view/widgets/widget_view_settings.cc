@@ -4,17 +4,27 @@
 
 namespace s21 {
 
-    ViewSettings::ViewSettings(QWidget *parent/*, MainWindow *window*/) : QWidget(parent), ui_(new Ui::ViewSettings)/*, w_(window)*/ {
+ViewSettings::ViewSettings(QWidget *parent)
+    : QWidget(parent), ui_(new Ui::ViewSettings) {
   ui_->setupUi(this);
-  main_window_ = dynamic_cast<s21::MainWindow *>(qApp->findChild<QWidget *>("MainWindow"));
-
-    connectButtons();
+  connectButtons();
 }
 
-    ViewSettings::~ViewSettings() { delete ui_; }
+ViewSettings::~ViewSettings() { delete ui_; }
 
 void ViewSettings::connectButtons() {
-  connect(ui_->bt_bg_color, SIGNAL(clicked()), main_window_, SLOT(buttonBackgroudColor()));
+  connect(ui_->bt_bg_color, &QPushButton::clicked, this,
+          &ViewSettings::buttonBackgroundColor);
+}
+
+void ViewSettings::buttonBackgroundColor() {
+  QColorDialog dialog(this);
+  dialog.setCurrentColor(conf_.color_bg_);
+  if (dialog.exec() == QDialog::Accepted) {
+    QColor color = dialog.selectedColor();
+    conf_.color_bg_ = color;
+    emit settingsUpdated();
+  }
 }
 
 }  // namespace s21

@@ -1,10 +1,10 @@
 #ifndef WIDGET_SETTINGS_H
 #define WIDGET_SETTINGS_H
 
+#include <QColorDialog>
 #include <QSlider>
 #include <QSpinBox>
 #include <QWidget>
-#include <QColorDialog>
 
 #include "../../controller/controller.h"
 #include "../../helpers/data_objects.h"

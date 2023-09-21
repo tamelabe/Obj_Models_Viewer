@@ -1,6 +1,7 @@
 #include "../model/model.h"
 
 #include <gtest/gtest.h>
+
 #include <filesystem>
 #include <string>
 

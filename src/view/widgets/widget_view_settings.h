@@ -1,12 +1,11 @@
 #ifndef WIDGET_VIEW_SETTINGS_H
 #define WIDGET_VIEW_SETTINGS_H
 
+#include <QColorDialog>
 #include <QSlider>
 #include <QSpinBox>
 #include <QWidget>
-#include <QColorDialog>
-
-#include "../mainwindow.h"
+#include "helpers/data_objects.h"
 
 namespace Ui {
 class ViewSettings;
@@ -18,25 +17,24 @@ class ViewSettings : public QWidget {
   Q_OBJECT
 
  public:
-  ViewSettings(QWidget *parent = nullptr/*, MainWindow *window = nullptr*/);
+  explicit ViewSettings(QWidget *parent = nullptr);
   ~ViewSettings();
 
-  QSettings* getSettings() {
-      return &qSettings_;
-  }
+  PaintConfig *getPaintConfig() { return &conf_; };
 
- private:
-  Ui::ViewSettings *ui_;
-  MainWindow *main_window_;
-  QSettings qSettings_{};
-
-  void connectButtons();
+ public slots:
+  void buttonBackgroundColor();
 
  signals:
   void settingsUpdated();
+
+ private:
+  Ui::ViewSettings *ui_;
+  PaintConfig conf_;
+
+  void connectButtons();
 };
 
 }  // namespace s21
 
 #endif  // WIDGET_VIEW_SETTINGS_H
-

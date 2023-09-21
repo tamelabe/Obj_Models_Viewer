@@ -68,10 +68,9 @@ void Settings::connectButtons() {
     movement('s', ui_->sl_scale->value());
     ui_->sb_scale->setValue(ui_->sl_scale->value());
   });
-//  connect(ui_->bt_bg_color, &QPushButton::clicked, this, [=]() {
-//    emit saveSettings();
-//  });
-
+  //  connect(ui_->bt_bg_color, &QPushButton::clicked, this, [=]() {
+  //    emit saveSettings();
+  //  });
 }
 
 void Settings::setDefault() {

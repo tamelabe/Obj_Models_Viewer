@@ -1,16 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
 #include <QKeyEvent>
+#include <QMainWindow>
 #include <QSettings>
 
 #include "render/ogl_render.h"
+#include "ui_mainwindow.h"
 #include "widgets/widget_actions.h"
 #include "widgets/widget_info.h"
 #include "widgets/widget_settings.h"
 #include "widgets/widget_view_settings.h"
-#include "ui_mainwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,28 +19,28 @@ class MainWindow;
 namespace s21 {
 
 class MainWindow : public QMainWindow {
-  Q_OBJECT
+ Q_OBJECT
 
  public:
+  QWidget *my_central_widget;
+  s21::Settings *w_settings;
+  s21::Info *w_info;
+  s21::Actions *w_actions;
+  s21::OpenGLMod *w_scene;
+  s21::ViewSettings *w_view_settings;
+
   explicit MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
+
   void keyPressEvent(QKeyEvent *event) override;
-    QColor getBackgroundColor() { return ui_->w_scene->getBackgroundColor(); };
-    void setBackgroundColor(QColor color_bg) { ui_->w_scene->setBackgroundColor(color_bg); };
-//    const MainWindow *getUi() { return reinterpret_cast<const MainWindow *>(ui_); };
-
-
-    public slots:
-        void buttonBackgroudColor();
-
 
  private slots:
   void updateView();
-  void on_bt_line_color_clicked();
-  void on_bt_vertex_color_clicked();
 
  private:
   Ui::MainWindow *ui_;
+  void setupWidgets();
+  void connectSlots();
 };
 
 }  // namespace s21
