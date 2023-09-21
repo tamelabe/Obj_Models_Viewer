@@ -4,6 +4,7 @@
 #include <QSlider>
 #include <QSpinBox>
 #include <QWidget>
+#include <QColorDialog>
 
 #include "../../controller/controller.h"
 #include "../../helpers/data_objects.h"
@@ -32,6 +33,7 @@ class Settings : public QWidget {
   int updateState(char pos_type, char axis, int value);
 
   void movement(char pos_type, int value, char axis = 0);
+  void setBackgroundColor();
 
  signals:
   void settingsUpdated();

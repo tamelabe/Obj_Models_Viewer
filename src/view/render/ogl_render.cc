@@ -4,7 +4,7 @@ namespace s21 {
 
 void OpenGLMod::updateObject() {
   object_ = &controller_.getObject();
-  if (object_ && object_->facets.size()) update();
+  if (object_ && object_->vertices.size()) update();
 }
 
 void OpenGLMod::initializeGL() {
@@ -42,6 +42,7 @@ void OpenGLMod::paintGL() {
   glLoadIdentity();
   glTranslatef(0, 0, -3 * heapHeight);
   drawObject();
+  emit saveSettings();
 }
 
 void OpenGLMod::drawObject() {

@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>1410</x>
-      <y>120</y>
+      <y>549</y>
       <width>260</width>
-      <height>870</height>
+      <height>441</height>
      </rect>
     </property>
    </widget>
@@ -51,6 +51,16 @@
       <y>40</y>
       <width>1380</width>
       <height>1000</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="s21::ViewSettings" name="w_view_settings" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1410</x>
+      <y>110</y>
+      <width>261</width>
+      <height>431</height>
      </rect>
     </property>
    </widget>
@@ -89,7 +99,13 @@
   <customwidget>
    <class>s21::OpenGLMod</class>
    <extends>QWidget</extends>
-   <header location="global">view/render/ogl_render.h</header>
+   <header>view/render/ogl_render.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>s21::ViewSettings</class>
+   <extends>QWidget</extends>
+   <header>view/widgets/widget_view_settings.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

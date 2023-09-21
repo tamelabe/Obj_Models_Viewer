@@ -38,10 +38,13 @@ set(PROJECT_SOURCES
         view/widgets/widget_actions.cc
         view/widgets/widget_actions.h
         view/widgets/widget_actions.ui
+        view/widgets/widget_view_settings.cc
+        view/widgets/widget_view_settings.h
+        view/widgets/widget_view_settings.ui
         view/render/ogl_render.cc
         view/render/ogl_render.h
         helpers/data_objects.h
-)
+        )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(3DViewer
