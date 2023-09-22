@@ -4,13 +4,14 @@ namespace s21 {
 
 void OpenGLMod::updateObject() {
   object_ = &controller_.getObject();
-  if (object_ && object_->vertices.size()) update();
+  if (object_ && object_->vertices.size()) {
+    update();
+  }
 }
 
 void OpenGLMod::initializeGL() {
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
-  //  color_line_ = QColor(255, 255, 255, 255);
 }
 
 void OpenGLMod::resizeGL(int w, int h) {
@@ -32,8 +33,8 @@ void OpenGLMod::resizeGL(int w, int h) {
 void OpenGLMod::paintGL() {
   glClearColor(conf_->color_bg_.redF(), conf_->color_bg_.greenF(),
                conf_->color_bg_.blueF(), conf_->color_bg_.alphaF());
-  //  glColor4f(color_line_.redF(), color_line_.greenF(), color_line_.blueF(),
-  //  color_line_.alphaF());
+    glColor4f(conf_->color_line_.redF(), conf_->color_line_.greenF(),
+              conf_->color_line_.blueF(), conf_->color_line_.alphaF());
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();

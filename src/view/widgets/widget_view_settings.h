@@ -24,6 +24,7 @@ class ViewSettings : public QWidget {
 
  public slots:
   void buttonBackgroundColor();
+  void buttonLineColor();
 
  signals:
   void settingsUpdated();

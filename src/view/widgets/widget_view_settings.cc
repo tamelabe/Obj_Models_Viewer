@@ -15,6 +15,8 @@ ViewSettings::~ViewSettings() { delete ui_; }
 void ViewSettings::connectButtons() {
   connect(ui_->bt_bg_color, &QPushButton::clicked, this,
           &ViewSettings::buttonBackgroundColor);
+  connect(ui_->bt_line_color, &QPushButton::clicked, this,
+            &ViewSettings::buttonLineColor);
 }
 
 void ViewSettings::buttonBackgroundColor() {
@@ -23,6 +25,16 @@ void ViewSettings::buttonBackgroundColor() {
   if (dialog.exec() == QDialog::Accepted) {
     QColor color = dialog.selectedColor();
     conf_.color_bg_ = color;
+    emit settingsUpdated();
+  }
+}
+
+void ViewSettings::buttonLineColor() {
+  QColorDialog dialog(this);
+  dialog.setCurrentColor(conf_.color_line_);
+  if (dialog.exec() == QDialog::Accepted) {
+    QColor color = dialog.selectedColor();
+    conf_.color_line_ = color;
     emit settingsUpdated();
   }
 }
