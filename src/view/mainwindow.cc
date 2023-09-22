@@ -11,8 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
   setWindowTitle("3D Viewer");
   setupWidgets();
   connectSlots();
-
-
 }
 
 void MainWindow::connectSlots() {

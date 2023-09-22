@@ -31,11 +31,22 @@ void OpenGLMod::resizeGL(int w, int h) {
 }
 
 void OpenGLMod::paintGL() {
-  glClearColor(conf_->color_bg_.redF(), conf_->color_bg_.greenF(),
-               conf_->color_bg_.blueF(), conf_->color_bg_.alphaF());
-    glColor4f(conf_->color_line_.redF(), conf_->color_line_.greenF(),
-              conf_->color_line_.blueF(), conf_->color_line_.alphaF());
+  glClearColor(conf_->color_bg.redF(), conf_->color_bg.greenF(),
+               conf_->color_bg.blueF(), conf_->color_bg.alphaF());
+  glColor4f(conf_->color_line.redF(), conf_->color_line.greenF(),
+            conf_->color_line.blueF(), conf_->color_line.alphaF());
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  glLineWidth(static_cast<float>(conf_->line_width));
+
+  if (conf_->line_dashed) {
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(10, 0x00FF);
+  } else {
+    glDisable(GL_LINE_STIPPLE);
+  }
+
+
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   int size = 3;
@@ -52,10 +63,8 @@ void OpenGLMod::drawObject() {
   glPointSize(5);
   glVertexPointer(3, GL_FLOAT, 0, object_->vertices.data());
   glEnableClientState(GL_VERTEX_ARRAY);
-  glLineWidth(2);
   glDisable(GL_POINT_SMOOTH);
   glEnable(GL_POINT_SPRITE);
-  glDisable(GL_LINE_STIPPLE);
   glDrawElements(GL_LINES, object_->facets.size(), GL_UNSIGNED_INT,
                  object_->facets.data());
   glDisableClientState(GL_VERTEX_ARRAY);

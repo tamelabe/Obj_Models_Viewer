@@ -19,7 +19,7 @@ class MainWindow;
 namespace s21 {
 
 class MainWindow : public QMainWindow {
- Q_OBJECT
+  Q_OBJECT
 
  public:
   QWidget *my_central_widget;

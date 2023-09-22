@@ -66,8 +66,11 @@ struct Edges {
 
 struct PaintConfig {
  public:
-  QColor color_bg_ = QColor(40, 40, 40, 255);
-  QColor color_line_ = QColor(255, 255, 255, 255);
+  QColor color_bg;
+  QColor color_line;
+  double line_width;
+  Qt::PenStyle line_style;
+  bool line_dashed;
 };
 
 }  // namespace s21

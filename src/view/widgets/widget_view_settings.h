@@ -2,9 +2,12 @@
 #define WIDGET_VIEW_SETTINGS_H
 
 #include <QColorDialog>
+#include <QSettings>
+#include <QVariant>
 #include <QSlider>
 #include <QSpinBox>
 #include <QWidget>
+
 #include "helpers/data_objects.h"
 
 namespace Ui {
@@ -20,11 +23,16 @@ class ViewSettings : public QWidget {
   explicit ViewSettings(QWidget *parent = nullptr);
   ~ViewSettings();
 
+  void saveViewSettings();
+  void loadViewSettings();
   PaintConfig *getPaintConfig() { return &conf_; };
 
  public slots:
   void buttonBackgroundColor();
   void buttonLineColor();
+  void spinboxLineWidth();
+  void toggleSolidLine();
+  void toggleDashedLine();
 
  signals:
   void settingsUpdated();
@@ -32,6 +40,7 @@ class ViewSettings : public QWidget {
  private:
   Ui::ViewSettings *ui_;
   PaintConfig conf_;
+  QSettings settings;
 
   void connectButtons();
 };
