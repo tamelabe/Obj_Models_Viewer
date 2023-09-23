@@ -46,6 +46,7 @@ void OpenGLMod::paintGL() {
     glDisable(GL_LINE_STIPPLE);
   }
 
+  glPointSize(conf_->vertex_size);
 
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
@@ -60,11 +61,16 @@ void OpenGLMod::paintGL() {
 
 void OpenGLMod::drawObject() {
   if (object_ == nullptr) return;
-  glPointSize(5);
+
+
   glVertexPointer(3, GL_FLOAT, 0, object_->vertices.data());
   glEnableClientState(GL_VERTEX_ARRAY);
   glDisable(GL_POINT_SMOOTH);
   glEnable(GL_POINT_SPRITE);
+
+  // Отрисовка точек
+  glDrawArrays(GL_POINTS, 0, object_->getVertices());
+
   glDrawElements(GL_LINES, object_->facets.size(), GL_UNSIGNED_INT,
                  object_->facets.data());
   glDisableClientState(GL_VERTEX_ARRAY);

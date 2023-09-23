@@ -314,6 +314,9 @@ border: 0px solid black;</string>
      <height>22</height>
     </rect>
    </property>
+   <property name="decimals">
+    <number>0</number>
+   </property>
   </widget>
  </widget>
  <resources/>

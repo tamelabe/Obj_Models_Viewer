@@ -71,6 +71,7 @@ struct PaintConfig {
   double line_width;
   Qt::PenStyle line_style;
   bool line_dashed;
+  int vertex_size;
 };
 
 }  // namespace s21

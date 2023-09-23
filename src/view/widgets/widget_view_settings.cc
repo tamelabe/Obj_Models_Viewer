@@ -24,6 +24,7 @@ void ViewSettings::connectButtons() {
   connect(ui_->bt_line_color, &QPushButton::clicked, this,
           &ViewSettings::buttonLineColor);
   connect(ui_->sb_line_width, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &ViewSettings::spinboxLineWidth);
+  connect(ui_->sb_vertex_size, QOverload<int>::of(&QSpinBox::valueChanged), this, &ViewSettings::spinboxVertexSize);
   connect(ui_->rb_et_solid, &QRadioButton::toggled, this, &ViewSettings::toggleSolidLine);
   connect(ui_->rb_et_dashed, &QRadioButton::toggled, this, &ViewSettings::toggleDashedLine);
 
@@ -82,6 +83,11 @@ void ViewSettings::buttonLineColor() {
     conf_.color_line = color;
     emit settingsUpdated();
   }
+}
+
+void ViewSettings::spinboxVertexSize() {
+  conf_.vertex_size = ui_->sb_vertex_size->value();
+  emit settingsUpdated();
 }
 
 }  // namespace s21

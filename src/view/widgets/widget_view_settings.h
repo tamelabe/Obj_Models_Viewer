@@ -31,6 +31,7 @@ class ViewSettings : public QWidget {
   void buttonBackgroundColor();
   void buttonLineColor();
   void spinboxLineWidth();
+  void spinboxVertexSize();
   void toggleSolidLine();
   void toggleDashedLine();
 
