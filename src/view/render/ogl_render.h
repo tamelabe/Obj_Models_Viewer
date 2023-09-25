@@ -7,9 +7,11 @@
 #include <QSettings>
 #include <QWidget>
 #include <iostream>
+#include <QtGui/QMatrix4x4>
 
 #include "../../controller/controller.h"
 #include "../../helpers/data_objects.h"
+#include "../../view/widgets/widget_settings.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -41,6 +43,7 @@ class OpenGLMod : public QOpenGLWidget {
   void resizeGL(int w, int h) override;
   void paintGL() override;
   void drawObject();
+
 };
 
 }  // namespace s21

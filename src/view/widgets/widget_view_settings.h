@@ -30,10 +30,15 @@ class ViewSettings : public QWidget {
  public slots:
   void buttonBackgroundColor();
   void buttonLineColor();
+  void buttonVertexColor();
   void spinboxLineWidth();
   void spinboxVertexSize();
   void toggleSolidLine();
   void toggleDashedLine();
+  void toggleNoneVertex();
+  void toggleCubeVertex();
+  void toggleBallVertex();
+
 
  signals:
   void settingsUpdated();

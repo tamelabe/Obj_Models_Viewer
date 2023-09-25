@@ -22,6 +22,9 @@ class Settings : public QWidget {
   Settings(QWidget *parent = nullptr);
   ~Settings();
   void setDefault();
+  const s21::ModelStateData *getModelState() const {
+    return &model_state_;
+  }
 
  private:
   Ui::Settings *ui_;
@@ -33,7 +36,6 @@ class Settings : public QWidget {
   int updateState(char pos_type, char axis, int value);
 
   void movement(char pos_type, int value, char axis = 0);
-  void setBackgroundColor();
 
  signals:
   void settingsUpdated();

@@ -205,10 +205,10 @@ border: 0px solid black;</string>
     </rect>
    </property>
    <property name="minimum">
-    <number>-360</number>
+    <number>0</number>
    </property>
    <property name="maximum">
-    <number>360</number>
+    <number>60</number>
    </property>
    <property name="stepType">
     <enum>QAbstractSpinBox::DefaultStepType</enum>
@@ -316,6 +316,9 @@ border: 0px solid black;</string>
    </property>
    <property name="decimals">
     <number>0</number>
+   </property>
+   <property name="maximum">
+    <double>60.000000000000000</double>
    </property>
   </widget>
  </widget>

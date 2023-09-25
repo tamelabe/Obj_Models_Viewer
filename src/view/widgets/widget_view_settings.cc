@@ -23,28 +23,39 @@ void ViewSettings::connectButtons() {
           &ViewSettings::buttonBackgroundColor);
   connect(ui_->bt_line_color, &QPushButton::clicked, this,
           &ViewSettings::buttonLineColor);
+  connect(ui_->bt_vertex_color, &QPushButton::clicked, this,
+          &ViewSettings::buttonVertexColor);
   connect(ui_->sb_line_width, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &ViewSettings::spinboxLineWidth);
   connect(ui_->sb_vertex_size, QOverload<int>::of(&QSpinBox::valueChanged), this, &ViewSettings::spinboxVertexSize);
   connect(ui_->rb_et_solid, &QRadioButton::toggled, this, &ViewSettings::toggleSolidLine);
   connect(ui_->rb_et_dashed, &QRadioButton::toggled, this, &ViewSettings::toggleDashedLine);
+  connect(ui_->rb_vt_none, &QRadioButton::toggled, this, &ViewSettings::toggleNoneVertex);
+  connect(ui_->rb_vt_cube, &QRadioButton::toggled, this, &ViewSettings::toggleCubeVertex);
+  connect(ui_->rb_vt_ball, &QRadioButton::toggled, this, &ViewSettings::toggleBallVertex);
 
 }
 
-
-
 void ViewSettings::saveViewSettings() {
-  settings.setValue("background_color", conf_.color_bg);
-  settings.setValue("line_color", conf_.color_line);
+  settings.setValue("color_bg", conf_.color_bg);
+  settings.setValue("color_line", conf_.color_line);
+  settings.setValue("color_vertex", conf_.color_vertex);
   settings.setValue("line_width", conf_.line_width);
   settings.setValue("line_style", static_cast<int>(conf_.line_style));
+  settings.setValue("line_dashed", conf_.line_dashed);
+  settings.setValue("vertex_style;", conf_.vertex_style);
+  settings.setValue("vertex_size;", conf_.vertex_size);
 
 }
 
 void ViewSettings::loadViewSettings() {
-  conf_.color_bg = settings.value("background_color", QColor(Qt::white)).value<QColor>();
-  conf_.color_line = settings.value("line_color", QColor(Qt::black )).value<QColor>();
+  conf_.color_bg = settings.value("color_bg", QColor(Qt::white)).value<QColor>();
+  conf_.color_line = settings.value("color_line", QColor(Qt::black)).value<QColor>();
+  conf_.color_vertex = settings.value("color_vertex", QColor(Qt::green)).value<QColor>();
   conf_.line_width = settings.value("line_width", 1).toFloat();
   conf_.line_style = static_cast<Qt::PenStyle>(settings.value("line_style", static_cast<int>(Qt::SolidLine)).toInt());
+  conf_.line_dashed = settings.value("line_dashed", false).toBool();
+  conf_.vertex_style = settings.value("vertex_style", 0).toInt();
+  conf_.vertex_size = settings.value("vertex_size", 0).toInt();
 
 }
 
@@ -56,6 +67,24 @@ void ViewSettings::spinboxLineWidth() {
 void ViewSettings::toggleSolidLine()
 {
   conf_.line_dashed = false;
+  emit settingsUpdated();
+}
+
+void ViewSettings::toggleNoneVertex()
+{
+  conf_.vertex_style = 0;
+  emit settingsUpdated();
+}
+
+void ViewSettings::toggleBallVertex()
+{
+  conf_.vertex_style = 1;
+  emit settingsUpdated();
+}
+
+void ViewSettings::toggleCubeVertex()
+{
+  conf_.vertex_style = 2;
   emit settingsUpdated();
 }
 
@@ -81,6 +110,16 @@ void ViewSettings::buttonLineColor() {
   if (dialog.exec() == QDialog::Accepted) {
     QColor color = dialog.selectedColor();
     conf_.color_line = color;
+    emit settingsUpdated();
+  }
+}
+
+void ViewSettings::buttonVertexColor() {
+  QColorDialog dialog(this);
+  dialog.setCurrentColor(conf_.color_vertex);
+  if (dialog.exec() == QDialog::Accepted) {
+    QColor color = dialog.selectedColor();
+    conf_.color_vertex = color;
     emit settingsUpdated();
   }
 }

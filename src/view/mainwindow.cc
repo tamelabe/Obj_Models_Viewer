@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::connectSlots() {
   connect(w_actions, &Actions::fileLoaded, this, [=]() {
     updateView();
+    w_info->updateInfo();
     w_settings->setDefault();
   });
   connect(w_settings, &Settings::settingsUpdated, this,
@@ -36,9 +37,9 @@ void s21::MainWindow::keyPressEvent(QKeyEvent *event) {
   }
 }
 
+
 void MainWindow::updateView() {
-  w_scene->updateObject();
-  w_info->updateInfo();
+    w_scene->updateObject();
 }
 
 void MainWindow::setupWidgets() {

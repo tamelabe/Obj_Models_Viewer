@@ -64,14 +64,18 @@ struct Edges {
   float z_max{};
 };
 
+
 struct PaintConfig {
  public:
   QColor color_bg;
   QColor color_line;
+  QColor color_vertex;
   double line_width;
   Qt::PenStyle line_style;
   bool line_dashed;
   int vertex_size;
+  int vertex_style;
+  bool projection_type;
 };
 
 }  // namespace s21
