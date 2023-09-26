@@ -71,7 +71,6 @@ struct PaintConfig {
   QColor color_line;
   QColor color_vertex;
   double line_width;
-  Qt::PenStyle line_style;
   bool line_dashed;
   int vertex_size;
   int vertex_style;

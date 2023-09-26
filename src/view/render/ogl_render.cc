@@ -31,8 +31,6 @@ void OpenGLMod::resizeGL(int w, int h) {
 }
 
 void OpenGLMod::paintGL() {
-
-
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
@@ -56,7 +54,7 @@ void OpenGLMod::paintGL() {
       glDisable(GL_POINT_SMOOTH);
       glDisable(GL_BLEND);
     }
-    glPointSize(conf_->vertex_size);
+    glPointSize(static_cast<float>(conf_->vertex_size));
     glColor4f(conf_->color_vertex.redF(), conf_->color_vertex.greenF(),
               conf_->color_vertex.blueF(), conf_->color_vertex.alphaF());
     glDrawArrays(GL_POINTS, 0, object_->getVertices());

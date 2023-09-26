@@ -10,7 +10,15 @@ ViewSettings::ViewSettings(QWidget *parent)
   connectButtons();
   loadViewSettings();
   ui_->sb_line_width->setValue(conf_.line_width);
-
+  ui_->sb_vertex_size->setValue(conf_.vertex_size);
+  if (conf_.line_dashed) {
+    ui_->rb_et_dashed->click();
+  }
+  if (conf_.vertex_style == 1) {
+    ui_->rb_vt_ball->click();
+  } else if (conf_.vertex_style == 2) {
+    ui_->rb_vt_cube->click();
+  }
 }
 
 ViewSettings::~ViewSettings() {
@@ -30,8 +38,8 @@ void ViewSettings::connectButtons() {
   connect(ui_->rb_et_solid, &QRadioButton::toggled, this, &ViewSettings::toggleSolidLine);
   connect(ui_->rb_et_dashed, &QRadioButton::toggled, this, &ViewSettings::toggleDashedLine);
   connect(ui_->rb_vt_none, &QRadioButton::toggled, this, &ViewSettings::toggleNoneVertex);
-  connect(ui_->rb_vt_cube, &QRadioButton::toggled, this, &ViewSettings::toggleCubeVertex);
   connect(ui_->rb_vt_ball, &QRadioButton::toggled, this, &ViewSettings::toggleBallVertex);
+  connect(ui_->rb_vt_cube, &QRadioButton::toggled, this, &ViewSettings::toggleCubeVertex);
 
 }
 
@@ -40,10 +48,9 @@ void ViewSettings::saveViewSettings() {
   settings.setValue("color_line", conf_.color_line);
   settings.setValue("color_vertex", conf_.color_vertex);
   settings.setValue("line_width", conf_.line_width);
-  settings.setValue("line_style", static_cast<int>(conf_.line_style));
   settings.setValue("line_dashed", conf_.line_dashed);
-  settings.setValue("vertex_style;", conf_.vertex_style);
-  settings.setValue("vertex_size;", conf_.vertex_size);
+  settings.setValue("vertex_style", (conf_.vertex_style));
+  settings.setValue("vertex_size", conf_.vertex_size);
 
 }
 
@@ -52,7 +59,6 @@ void ViewSettings::loadViewSettings() {
   conf_.color_line = settings.value("color_line", QColor(Qt::black)).value<QColor>();
   conf_.color_vertex = settings.value("color_vertex", QColor(Qt::green)).value<QColor>();
   conf_.line_width = settings.value("line_width", 1).toFloat();
-  conf_.line_style = static_cast<Qt::PenStyle>(settings.value("line_style", static_cast<int>(Qt::SolidLine)).toInt());
   conf_.line_dashed = settings.value("line_dashed", false).toBool();
   conf_.vertex_style = settings.value("vertex_style", 0).toInt();
   conf_.vertex_size = settings.value("vertex_size", 0).toInt();
