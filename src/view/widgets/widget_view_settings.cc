@@ -19,6 +19,9 @@ ViewSettings::ViewSettings(QWidget *parent)
   } else if (conf_.vertex_style == 2) {
     ui_->rb_vt_cube->click();
   }
+  if (conf_.central_projection) {
+    ui_->rb_pt_central->click();
+  }
 }
 
 ViewSettings::~ViewSettings() {
@@ -40,6 +43,8 @@ void ViewSettings::connectButtons() {
   connect(ui_->rb_vt_none, &QRadioButton::toggled, this, &ViewSettings::toggleNoneVertex);
   connect(ui_->rb_vt_ball, &QRadioButton::toggled, this, &ViewSettings::toggleBallVertex);
   connect(ui_->rb_vt_cube, &QRadioButton::toggled, this, &ViewSettings::toggleCubeVertex);
+  connect(ui_->rb_pt_central, &QRadioButton::toggled, this, &ViewSettings::toggleCentralProjection);
+  connect(ui_->rb_pt_parallel, &QRadioButton::toggled, this, &ViewSettings::toggleParallelProjection);
 
 }
 
@@ -51,6 +56,7 @@ void ViewSettings::saveViewSettings() {
   settings.setValue("line_dashed", conf_.line_dashed);
   settings.setValue("vertex_style", (conf_.vertex_style));
   settings.setValue("vertex_size", conf_.vertex_size);
+  settings.setValue("central_projection", conf_.central_projection);
 
 }
 
@@ -62,6 +68,7 @@ void ViewSettings::loadViewSettings() {
   conf_.line_dashed = settings.value("line_dashed", false).toBool();
   conf_.vertex_style = settings.value("vertex_style", 0).toInt();
   conf_.vertex_size = settings.value("vertex_size", 0).toInt();
+  conf_.vertex_size = settings.value("central_projection", false).toBool();
 
 }
 
@@ -132,6 +139,16 @@ void ViewSettings::buttonVertexColor() {
 
 void ViewSettings::spinboxVertexSize() {
   conf_.vertex_size = ui_->sb_vertex_size->value();
+  emit settingsUpdated();
+}
+
+void ViewSettings::toggleCentralProjection() {
+  conf_.central_projection = true;
+  emit settingsUpdated();
+}
+
+void ViewSettings::toggleParallelProjection() {
+  conf_.central_projection = false;
   emit settingsUpdated();
 }
 

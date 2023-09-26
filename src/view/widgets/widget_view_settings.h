@@ -38,6 +38,8 @@ class ViewSettings : public QWidget {
   void toggleNoneVertex();
   void toggleCubeVertex();
   void toggleBallVertex();
+  void toggleCentralProjection();
+  void toggleParallelProjection();
 
 
  signals:

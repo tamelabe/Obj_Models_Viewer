@@ -73,8 +73,8 @@ struct PaintConfig {
   double line_width;
   bool line_dashed;
   int vertex_size;
-  int vertex_style;
-  bool projection_type;
+  int vertex_style;  // 0 - none, 1 - ball, 2 - cube
+  bool central_projection;  // false - parallel projection
 };
 
 }  // namespace s21

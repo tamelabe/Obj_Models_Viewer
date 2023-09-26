@@ -7,7 +7,7 @@ namespace s21 {
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui_(new Ui::MainWindow) {
   ui_->setupUi(this);
-  setFixedSize(1680, 1070);
+  setFixedSize(window_widht, window_height);
   setWindowTitle("3D Viewer");
   setupWidgets();
   connectSlots();
@@ -27,7 +27,15 @@ void MainWindow::connectSlots() {
           [=]() { w_settings->setDefault(); });
 }
 
-MainWindow::~MainWindow() { delete ui_; }
+MainWindow::~MainWindow() {
+  delete w_scene;
+  delete w_view_settings;
+  delete w_actions;
+  delete w_info;
+  delete w_settings;
+  delete my_central_widget;
+  delete ui_;
+}
 
 void s21::MainWindow::keyPressEvent(QKeyEvent *event) {
   if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key_W) {
@@ -67,6 +75,7 @@ void MainWindow::setupWidgets() {
   w_scene->setObjectName(QString::fromUtf8("w_scene"));
   w_scene->setGeometry(QRect(10, 40, 1380, 1000));
   w_scene->setPaintConfig(w_view_settings->getPaintConfig());
+  w_scene->setWindowSize(window_widht, window_height);
 }
 
 }  // namespace s21
