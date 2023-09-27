@@ -16,8 +16,6 @@ void OpenGLMod::initializeGL() {
 
 void OpenGLMod::resizeGL(int w, int h) {
   glViewport(0, 0, w, h);
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
 }
 
 
@@ -27,7 +25,6 @@ void OpenGLMod::paintGL() {
 
   if (conf_->central_projection) {
     glFrustum(-1.333, 1.333, -1.0, 1.0, 1.0, 100.0);
-
   } else {
     glOrtho(-5.75, 5.75, -4.166, 4.166, -100, 100);
   }

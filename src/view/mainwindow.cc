@@ -63,10 +63,6 @@ void MainWindow::setupWidgets() {
   w_info->setObjectName(QString::fromUtf8("w_info"));
   w_info->setGeometry(QRect(1410, 10, 260, 100));
 
-  w_actions = new s21::Actions(my_central_widget);
-  w_actions->setObjectName(QString::fromUtf8("w_actions"));
-  w_actions->setGeometry(QRect(10, 5, 515, 30));
-
   w_view_settings = new s21::ViewSettings(my_central_widget);
   w_view_settings->setObjectName(QString::fromUtf8("w_view_settings"));
   w_view_settings->setGeometry(QRect(1410, 110, 261, 431));
@@ -76,6 +72,11 @@ void MainWindow::setupWidgets() {
   w_scene->setGeometry(QRect(10, 40, 1380, 1000));
   w_scene->setPaintConfig(w_view_settings->getPaintConfig());
   w_scene->setWindowSize(window_widht, window_height);
+
+  w_actions = new s21::Actions(my_central_widget);
+  w_actions->setObjectName(QString::fromUtf8("w_actions"));
+  w_actions->setGeometry(QRect(10, 5, 515, 30));
+  w_actions->setOpenGLMod(w_scene);
 }
 
 }  // namespace s21

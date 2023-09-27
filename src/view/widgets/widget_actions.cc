@@ -15,9 +15,9 @@ void Actions::connectButtons() {
   connect(ui_->bt_load_file, &QPushButton::clicked, this,
           [=]() { loadFile(); });
   connect(ui_->bt_save_bmp, &QPushButton::clicked, this,
-          [=]() { savePic('b'); });
+          [=]() { saveImage("*.bmp");; });
   connect(ui_->bt_save_jpeg, &QPushButton::clicked, this,
-          [=]() { savePic('j'); });
+          [=]() { saveImage("*.jpeg"); });
   connect(ui_->bt_rec, &QPushButton::clicked, this, [=]() { loadFile(); });
 }
 
@@ -31,9 +31,11 @@ void Actions::loadFile() {
   emit fileLoaded();
 }
 
-void Actions::savePic(char type) {
-  if (type == 'b') {
-  } else if (type == 'j') {
+void Actions::saveImage(const QString& format) {
+  QString str = QFileDialog::getSaveFileName(this, "Save file as",
+                                             QDir::homePath(), format);
+  if (str != "") {
+    scene_->grabFramebuffer().save(str);
   }
 }
 

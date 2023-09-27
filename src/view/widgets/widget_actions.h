@@ -7,7 +7,7 @@
 #include <string>
 
 #include "controller/controller.h"
-
+#include "../render/ogl_render.h"
 // #include "../../controller/controller.h"
 
 namespace Ui {
@@ -23,13 +23,16 @@ class Actions : public QWidget {
   explicit Actions(QWidget *parent = nullptr);
   ~Actions();
 
+  void setOpenGLMod(OpenGLMod *scene) { scene_ = scene; };
+
  private:
   Ui::Actions *ui_;
   std::string filepath_;
   s21::Controller &controller_ = s21::Controller::getInstance();
+  s21::OpenGLMod *scene_;
 
   void connectButtons();
-  void savePic(char type);
+  void saveImage(const QString& format);
 
  signals:
   void fileLoaded();

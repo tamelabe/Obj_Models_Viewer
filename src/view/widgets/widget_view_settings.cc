@@ -13,6 +13,8 @@ ViewSettings::ViewSettings(QWidget *parent)
   ui_->sb_vertex_size->setValue(conf_.vertex_size);
   if (conf_.line_dashed) {
     ui_->rb_et_dashed->click();
+  } else {
+    ui_->rb_et_solid->click();
   }
   if (conf_.vertex_style == 1) {
     ui_->rb_vt_ball->click();
@@ -21,6 +23,8 @@ ViewSettings::ViewSettings(QWidget *parent)
   }
   if (conf_.central_projection) {
     ui_->rb_pt_central->click();
+  } else {
+    ui_->rb_pt_parallel->click();
   }
 }
 
@@ -54,7 +58,7 @@ void ViewSettings::saveViewSettings() {
   settings.setValue("color_vertex", conf_.color_vertex);
   settings.setValue("line_width", conf_.line_width);
   settings.setValue("line_dashed", conf_.line_dashed);
-  settings.setValue("vertex_style", (conf_.vertex_style));
+  settings.setValue("vertex_style", conf_.vertex_style);
   settings.setValue("vertex_size", conf_.vertex_size);
   settings.setValue("central_projection", conf_.central_projection);
 
@@ -68,7 +72,7 @@ void ViewSettings::loadViewSettings() {
   conf_.line_dashed = settings.value("line_dashed", false).toBool();
   conf_.vertex_style = settings.value("vertex_style", 0).toInt();
   conf_.vertex_size = settings.value("vertex_size", 0).toInt();
-  conf_.vertex_size = settings.value("central_projection", false).toBool();
+  conf_.central_projection = settings.value("central_projection", false).toBool();
 
 }
 
