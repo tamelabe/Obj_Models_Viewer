@@ -14,6 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets OpenGLWidgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGLWidgets)
+add_subdirectory(resources/GIFCreation)
 set(PROJECT_SOURCES
         main.cc
         model/model.h
@@ -72,7 +73,7 @@ endif()
 target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
                                        Qt${QT_VERSION_MAJOR}::Core
                                        Qt${QT_VERSION_MAJOR}::Gui
-                                       Qt${QT_VERSION_MAJOR}::OpenGLWidgets)
+                                       Qt${QT_VERSION_MAJOR}::OpenGLWidgets GIFLIB)
 
 set_target_properties(3DViewer PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
