@@ -22,9 +22,7 @@ class Settings : public QWidget {
   Settings(QWidget *parent = nullptr);
   ~Settings();
   void setDefault();
-  const s21::ModelStateData *getModelState() const {
-    return &model_state_;
-  }
+  const s21::ModelStateData *getModelState() const { return &model_state_; }
 
  private:
   Ui::Settings *ui_;

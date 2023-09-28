@@ -3,9 +3,9 @@
 
 #include <QColorDialog>
 #include <QSettings>
-#include <QVariant>
 #include <QSlider>
 #include <QSpinBox>
+#include <QVariant>
 #include <QWidget>
 
 #include "helpers/data_objects.h"
@@ -40,7 +40,6 @@ class ViewSettings : public QWidget {
   void toggleBallVertex();
   void toggleCentralProjection();
   void toggleParallelProjection();
-
 
  signals:
   void settingsUpdated();

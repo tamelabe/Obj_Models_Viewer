@@ -40,16 +40,25 @@ void ViewSettings::connectButtons() {
           &ViewSettings::buttonLineColor);
   connect(ui_->bt_vertex_color, &QPushButton::clicked, this,
           &ViewSettings::buttonVertexColor);
-  connect(ui_->sb_line_width, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &ViewSettings::spinboxLineWidth);
-  connect(ui_->sb_vertex_size, QOverload<int>::of(&QSpinBox::valueChanged), this, &ViewSettings::spinboxVertexSize);
-  connect(ui_->rb_et_solid, &QRadioButton::toggled, this, &ViewSettings::toggleSolidLine);
-  connect(ui_->rb_et_dashed, &QRadioButton::toggled, this, &ViewSettings::toggleDashedLine);
-  connect(ui_->rb_vt_none, &QRadioButton::toggled, this, &ViewSettings::toggleNoneVertex);
-  connect(ui_->rb_vt_ball, &QRadioButton::toggled, this, &ViewSettings::toggleBallVertex);
-  connect(ui_->rb_vt_cube, &QRadioButton::toggled, this, &ViewSettings::toggleCubeVertex);
-  connect(ui_->rb_pt_central, &QRadioButton::toggled, this, &ViewSettings::toggleCentralProjection);
-  connect(ui_->rb_pt_parallel, &QRadioButton::toggled, this, &ViewSettings::toggleParallelProjection);
-
+  connect(ui_->sb_line_width,
+          QOverload<double>::of(&QDoubleSpinBox::valueChanged), this,
+          &ViewSettings::spinboxLineWidth);
+  connect(ui_->sb_vertex_size, QOverload<int>::of(&QSpinBox::valueChanged),
+          this, &ViewSettings::spinboxVertexSize);
+  connect(ui_->rb_et_solid, &QRadioButton::toggled, this,
+          &ViewSettings::toggleSolidLine);
+  connect(ui_->rb_et_dashed, &QRadioButton::toggled, this,
+          &ViewSettings::toggleDashedLine);
+  connect(ui_->rb_vt_none, &QRadioButton::toggled, this,
+          &ViewSettings::toggleNoneVertex);
+  connect(ui_->rb_vt_ball, &QRadioButton::toggled, this,
+          &ViewSettings::toggleBallVertex);
+  connect(ui_->rb_vt_cube, &QRadioButton::toggled, this,
+          &ViewSettings::toggleCubeVertex);
+  connect(ui_->rb_pt_central, &QRadioButton::toggled, this,
+          &ViewSettings::toggleCentralProjection);
+  connect(ui_->rb_pt_parallel, &QRadioButton::toggled, this,
+          &ViewSettings::toggleParallelProjection);
 }
 
 void ViewSettings::saveViewSettings() {
@@ -61,19 +70,21 @@ void ViewSettings::saveViewSettings() {
   settings.setValue("vertex_style", conf_.vertex_style);
   settings.setValue("vertex_size", conf_.vertex_size);
   settings.setValue("central_projection", conf_.central_projection);
-
 }
 
 void ViewSettings::loadViewSettings() {
-  conf_.color_bg = settings.value("color_bg", QColor(Qt::white)).value<QColor>();
-  conf_.color_line = settings.value("color_line", QColor(Qt::black)).value<QColor>();
-  conf_.color_vertex = settings.value("color_vertex", QColor(Qt::green)).value<QColor>();
+  conf_.color_bg =
+      settings.value("color_bg", QColor(Qt::white)).value<QColor>();
+  conf_.color_line =
+      settings.value("color_line", QColor(Qt::black)).value<QColor>();
+  conf_.color_vertex =
+      settings.value("color_vertex", QColor(Qt::green)).value<QColor>();
   conf_.line_width = settings.value("line_width", 1).toFloat();
   conf_.line_dashed = settings.value("line_dashed", false).toBool();
   conf_.vertex_style = settings.value("vertex_style", 0).toInt();
   conf_.vertex_size = settings.value("vertex_size", 0).toInt();
-  conf_.central_projection = settings.value("central_projection", false).toBool();
-
+  conf_.central_projection =
+      settings.value("central_projection", false).toBool();
 }
 
 void ViewSettings::spinboxLineWidth() {
@@ -81,32 +92,27 @@ void ViewSettings::spinboxLineWidth() {
   emit settingsUpdated();
 }
 
-void ViewSettings::toggleSolidLine()
-{
+void ViewSettings::toggleSolidLine() {
   conf_.line_dashed = false;
   emit settingsUpdated();
 }
 
-void ViewSettings::toggleNoneVertex()
-{
+void ViewSettings::toggleNoneVertex() {
   conf_.vertex_style = 0;
   emit settingsUpdated();
 }
 
-void ViewSettings::toggleBallVertex()
-{
+void ViewSettings::toggleBallVertex() {
   conf_.vertex_style = 1;
   emit settingsUpdated();
 }
 
-void ViewSettings::toggleCubeVertex()
-{
+void ViewSettings::toggleCubeVertex() {
   conf_.vertex_style = 2;
   emit settingsUpdated();
 }
 
-void ViewSettings::toggleDashedLine()
-{
+void ViewSettings::toggleDashedLine() {
   conf_.line_dashed = true;
   emit settingsUpdated();
 }

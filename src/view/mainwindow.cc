@@ -45,10 +45,7 @@ void s21::MainWindow::keyPressEvent(QKeyEvent *event) {
   }
 }
 
-
-void MainWindow::updateView() {
-    w_scene->updateObject();
-}
+void MainWindow::updateView() { w_scene->updateObject(); }
 
 void MainWindow::setupWidgets() {
   my_central_widget = new QWidget(this);

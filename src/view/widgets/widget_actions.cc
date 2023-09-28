@@ -4,7 +4,7 @@
 
 namespace s21 {
 
-Actions::Actions(QWidget *parent) : QWidget(parent), ui_(new Ui::Actions) {
+Actions::Actions(QWidget* parent) : QWidget(parent), ui_(new Ui::Actions) {
   ui_->setupUi(this);
   connectButtons();
   record_time_ = new QTimer(this);
@@ -16,12 +16,14 @@ Actions::~Actions() { delete ui_; }
 void Actions::connectButtons() {
   connect(ui_->bt_load_file, &QPushButton::clicked, this,
           [=]() { loadFile(); });
-  connect(ui_->bt_save_bmp, &QPushButton::clicked, this,
-          [=]() { saveImage("*.bmp");; });
+  connect(ui_->bt_save_bmp, &QPushButton::clicked, this, [=]() {
+    saveImage("*.bmp");
+    ;
+  });
   connect(ui_->bt_save_jpeg, &QPushButton::clicked, this,
           [=]() { saveImage("*.jpeg"); });
-  connect(ui_->bt_rec, &QPushButton::clicked, this, [=]() { startGIFRecord(); });
-
+  connect(ui_->bt_rec, &QPushButton::clicked, this,
+          [=]() { startGIFRecord(); });
 }
 
 void Actions::loadFile() {
@@ -58,7 +60,7 @@ void Actions::recordGIF() {
     ui_->bt_rec->setText("RECORDING...");
   } else {
     ui_->bt_rec->setText("REC GIF");
-    scene_->move(10 , 40);
+    scene_->move(10, 40);
     scene_->resize(1380, 1000);
     record_time_->stop();
     saveGIF();
@@ -67,7 +69,7 @@ void Actions::recordGIF() {
 
 void Actions::saveGIF() {
   QString str = QFileDialog::getSaveFileName(
-    this, tr("Save GIF"), QDir::homePath(), tr("GIF (*.gif)"));
+      this, tr("Save GIF"), QDir::homePath(), tr("GIF (*.gif)"));
   if (str != "") {
     QGifImage current_gif;
     current_gif.setDefaultTransparentColor(Qt::black);
@@ -83,6 +85,5 @@ void Actions::saveGIF() {
   time_ = 0.0;
   is_record_ = false;
 }
-
 
 }  // namespace s21

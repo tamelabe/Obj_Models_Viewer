@@ -64,7 +64,6 @@ struct Edges {
   float z_max{};
 };
 
-
 struct PaintConfig {
  public:
   QColor color_bg;
@@ -73,7 +72,7 @@ struct PaintConfig {
   double line_width;
   bool line_dashed;
   int vertex_size;
-  int vertex_style;  // 0 - none, 1 - ball, 2 - cube
+  int vertex_style;         // 0 - none, 1 - ball, 2 - cube
   bool central_projection;  // false - parallel projection
 };
 

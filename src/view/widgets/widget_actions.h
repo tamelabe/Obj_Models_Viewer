@@ -3,15 +3,15 @@
 
 #include <QDir>
 #include <QFileDialog>
-#include <QWidget>
-#include <QVector>
 #include <QImage>
 #include <QTimer>
+#include <QVector>
+#include <QWidget>
 #include <string>
 
-#include "controller/controller.h"
-#include "../render/ogl_render.h"
 #include "../../resources/GIFCreation/gifImage/qgifimage.h"
+#include "../render/ogl_render.h"
+#include "controller/controller.h"
 // #include "../../controller/controller.h"
 
 namespace Ui {
@@ -41,14 +41,13 @@ class Actions : public QWidget {
 
   void connectButtons();
 
-
  signals:
   void fileLoaded();
   void resetConfig();
 
  private slots:
   void loadFile();
-  void saveImage(const QString& format);
+  void saveImage(const QString &format);
   void startGIFRecord();
   void recordGIF();
   void saveGIF();
