@@ -29,10 +29,6 @@ class OpenGLMod : public QOpenGLWidget {
   ~OpenGLMod() {}
 
   void setPaintConfig(PaintConfig* conf) { conf_ = conf; };
-  void setWindowSize(int window_widht, int window_height) {
-    window_widht_ = window_widht;
-    window_height_ = window_height;
-  };
   void updateObject();
 
  signals:
@@ -43,13 +39,9 @@ class OpenGLMod : public QOpenGLWidget {
   const s21::GLObject* object_ = nullptr;
   s21::Controller& controller_ = s21::Controller::getInstance();
 
-  int window_widht_;
-  int window_height_;
-
   void initializeGL() override;
   void resizeGL(int w, int h) override;
   void paintGL() override;
-  void drawObject();
 };
 
 }  // namespace s21

@@ -4,7 +4,7 @@ namespace s21 {
 
 void OpenGLMod::updateObject() {
   object_ = &controller_.getObject();
-  if (object_ && object_->vertices.size()) {
+  if (object_ && !object_->vertices.empty()) {
     update();
   }
 }

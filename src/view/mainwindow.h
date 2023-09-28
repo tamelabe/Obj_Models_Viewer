@@ -39,8 +39,6 @@ class MainWindow : public QMainWindow {
 
  private:
   Ui::MainWindow *ui_;
-  int window_widht = 1680;
-  int window_height = 1070;
   void setupWidgets();
   void connectSlots();
 };

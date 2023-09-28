@@ -7,7 +7,7 @@ namespace s21 {
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui_(new Ui::MainWindow) {
   ui_->setupUi(this);
-  setFixedSize(window_widht, window_height);
+  setFixedSize(1680, 1070);
   setWindowTitle("3D Viewer");
   setupWidgets();
   connectSlots();
@@ -68,7 +68,6 @@ void MainWindow::setupWidgets() {
   w_scene->setObjectName(QString::fromUtf8("w_scene"));
   w_scene->setGeometry(QRect(10, 40, 1380, 1000));
   w_scene->setPaintConfig(w_view_settings->getPaintConfig());
-  w_scene->setWindowSize(window_widht, window_height);
 
   w_actions = new s21::Actions(my_central_widget);
   w_actions->setObjectName(QString::fromUtf8("w_actions"));
