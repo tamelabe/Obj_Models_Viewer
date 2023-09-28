@@ -45,7 +45,7 @@ void Actions::saveImage(const QString& format) {
 void Actions::startGIFRecord() {
   if (!is_record_) {
     scene_->resize(640, 480);
-//    scene_->move(690, 500);
+    scene_->move(450, 260);
     is_record_ = true;
     record_time_->start(100);
   }
@@ -58,7 +58,7 @@ void Actions::recordGIF() {
     ui_->bt_rec->setText("RECORDING...");
   } else {
     ui_->bt_rec->setText("REC GIF");
-//    scene_->move(0, 0);
+    scene_->move(10 , 40);
     scene_->resize(1380, 1000);
     record_time_->stop();
     saveGIF();
