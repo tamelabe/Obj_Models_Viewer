@@ -73,6 +73,11 @@ check:
 	find . -type f \( -name "*.cc" -o -name "*.h" \) -exec clang-format -n --style="Google" {} \;
 	rm -f .clang-format
 
+lint:
+	cp ../materials/linters/.clang-format .
+	find . -type f \( -name "*.cc" -o -name "*.h" \) -exec clang-format -i --style="Google" {} \;
+	rm -f .clang-format
+
 leaks:
 ifeq ($(OS),Darwin)
 	leaks --atExit -- ./test.o

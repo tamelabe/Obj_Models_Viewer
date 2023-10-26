@@ -13,48 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="s21::Settings" name="w_settings" native="true">
-    <property name="geometry">
-     <rect>
-      <x>1410</x>
-      <y>120</y>
-      <width>260</width>
-      <height>870</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="s21::Info" name="w_info" native="true">
-    <property name="geometry">
-     <rect>
-      <x>1410</x>
-      <y>10</y>
-      <width>260</width>
-      <height>100</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="s21::Actions" name="w_actions" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>5</y>
-      <width>515</width>
-      <height>30</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="s21::OpenGLMod" name="w_scene" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>1380</width>
-      <height>1000</height>
-     </rect>
-    </property>
-   </widget>
-  </widget>
+  <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -67,32 +26,6 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>s21::Settings</class>
-   <extends>QWidget</extends>
-   <header>view/widgets/widget_settings.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>s21::Info</class>
-   <extends>QWidget</extends>
-   <header>view/widgets/widget_info.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>s21::Actions</class>
-   <extends>QWidget</extends>
-   <header>view/widgets/widget_actions.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>s21::OpenGLMod</class>
-   <extends>QWidget</extends>
-   <header location="global">view/render/ogl_render.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

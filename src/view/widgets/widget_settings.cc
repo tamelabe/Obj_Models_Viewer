@@ -98,13 +98,12 @@ int Settings::updateState(char pos_type, char axis, int value) {
     if (axis == 'x') {
       prev_value = model_state_.rotate.x;
       model_state_.rotate.x = value;
-
     } else if (axis == 'y') {
       prev_value = model_state_.rotate.y;
       model_state_.rotate.y = value;
     } else if (axis == 'z') {
-      prev_value = model_state_.rotate.y;
-      model_state_.rotate.y = value;
+      prev_value = model_state_.rotate.z;
+      model_state_.rotate.z = value;
     }
   } else if (pos_type == 'm') {
     if (axis == 'x') {

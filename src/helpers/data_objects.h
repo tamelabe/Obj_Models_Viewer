@@ -1,6 +1,7 @@
 #ifndef SRC_DATA_OBJECTS_H_
 #define SRC_DATA_OBJECTS_H_
 
+#include <QColor>
 #include <filesystem>
 #include <string>
 #include <vector>
@@ -12,7 +13,9 @@ class GLObject {
   GLObject() = default;
   ~GLObject() = default;
   int getVertices() const { return vertices.size() / 3; }
-  int getEdges() const { return (facets.size() / 6) + (vertices.size() / 3) - 2; }
+  int getEdges() const {
+    return (facets.size() / 6) + (vertices.size() / 3) - 2;
+  }
   std::string getFile() const {
     std::filesystem::path filePath(filepath);
     return filePath.filename().string();
@@ -59,6 +62,18 @@ struct Edges {
   float x_max{};
   float y_max{};
   float z_max{};
+};
+
+struct PaintConfig {
+ public:
+  QColor color_bg;
+  QColor color_line;
+  QColor color_vertex;
+  double line_width;
+  bool line_dashed;
+  int vertex_size;
+  int vertex_style;         // 0 - none, 1 - ball, 2 - cube
+  bool central_projection;  // false - parallel projection
 };
 
 }  // namespace s21

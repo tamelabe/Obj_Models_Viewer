@@ -14,6 +14,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets OpenGLWidgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGLWidgets)
+add_subdirectory(resources/GIFCreation)
+
+set(MACOSX_BUNDLE_ICON_FILE viewer.icns)
+set(app_icon_macos "${CMAKE_CURRENT_SOURCE_DIR}/viewer.icns")
+set_source_files_properties(${app_icon_macos} PROPERTIES
+        MACOSX_PACKAGE_LOCATION "resources")
+
 set(PROJECT_SOURCES
         main.cc
         model/model.h
@@ -38,10 +45,15 @@ set(PROJECT_SOURCES
         view/widgets/widget_actions.cc
         view/widgets/widget_actions.h
         view/widgets/widget_actions.ui
+        view/widgets/widget_view_settings.cc
+        view/widgets/widget_view_settings.h
+        view/widgets/widget_view_settings.ui
         view/render/ogl_render.cc
         view/render/ogl_render.h
         helpers/data_objects.h
-)
+        resource.qrc
+        ${app_icon_macos}
+        )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(3DViewer
@@ -69,7 +81,7 @@ endif()
 target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
                                        Qt${QT_VERSION_MAJOR}::Core
                                        Qt${QT_VERSION_MAJOR}::Gui
-                                       Qt${QT_VERSION_MAJOR}::OpenGLWidgets)
+                                       Qt${QT_VERSION_MAJOR}::OpenGLWidgets GIFLIB)
 
 set_target_properties(3DViewer PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

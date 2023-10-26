@@ -3,11 +3,15 @@
 
 #include <QDir>
 #include <QFileDialog>
+#include <QImage>
+#include <QTimer>
+#include <QVector>
 #include <QWidget>
 #include <string>
 
+#include "../../resources/GIFCreation/gifImage/qgifimage.h"
+#include "../render/ogl_render.h"
 #include "controller/controller.h"
-
 // #include "../../controller/controller.h"
 
 namespace Ui {
@@ -23,13 +27,19 @@ class Actions : public QWidget {
   explicit Actions(QWidget *parent = nullptr);
   ~Actions();
 
+  void setOpenGLMod(OpenGLMod *scene) { scene_ = scene; };
+
  private:
   Ui::Actions *ui_;
   std::string filepath_;
   s21::Controller &controller_ = s21::Controller::getInstance();
+  s21::OpenGLMod *scene_;
+  bool is_record_{};
+  QVector<QImage> gif_;
+  QTimer *record_time_;
+  float time_{};
 
   void connectButtons();
-  void savePic(char type);
 
  signals:
   void fileLoaded();
@@ -37,7 +47,10 @@ class Actions : public QWidget {
 
  private slots:
   void loadFile();
-  void rec();
+  void saveImage(const QString &format);
+  void startGIFRecord();
+  void recordGIF();
+  void saveGIF();
 };
 
 }  // namespace s21
