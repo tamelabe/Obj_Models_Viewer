@@ -10,6 +10,18 @@ CURRENT_DIR := $(abspath $(CURDIR))
 INSTALL_DIR ?= $(HOME)/Desktop
 
 OS := $(shell uname -s)
+OBJ_FILES := $(shell ls obj/)
+OBJ_FILES_EXPECTED := Apple.obj \
+                      Cow.obj \
+                      Dragon.obj \
+                      Koenigsegg.obj \
+                      Lion.obj \
+                      PrettyCube.obj \
+                      Teapot.obj \
+                      Teddy.obj \
+                      bugatti.obj \
+                      cube.obj \
+                      skull.obj
 
 all: clean install
 
@@ -24,18 +36,18 @@ endif
 
 uninstall:
 ifeq ($(OS),Darwin)
-	rm -rf $(INSTALL_DIR)/3DViewer.app
+	rm -rf build/ $(INSTALL_DIR)/3DViewer.app
 else
-	rm -rf $(INSTALL_DIR)/3DViewer
+	rm -rf build/ $(INSTALL_DIR)/3DViewer
 endif
 
 clean:
-	@rm -rf report build
+	@rm -rf report buildmake
 	@rm -rf *.gcda *.gcno *.info *.gch *.dSYM .DS_Store
 	@rm -rf ../*.idea ../.run ../*.dSYM
 	@rm -rf *.a *.o
-	@rm -rf build/*
-	@rm -rf *.user ./--main main.tar.gz
+	@rm -rf build/
+	@rm -rf *.user ./--main main.tar.gz 3DViewer.tar.gz
 
 dvi:
 ifeq ($(OS),Darwin)
@@ -44,23 +56,38 @@ else
 	xdg-open ./dvi.html
 endif
 
-dist: clean
+dist:
+	rm -rf 3DViewer/
 	mkdir 3DViewer/
 	mkdir 3DViewer/src
-	cp -r controller model helpers tests view Makefile CMakeLists.txt main.cc dvi.html 3DViewer/src
+	cp -r controller \
+			model \
+			 helpers \
+			 resources \
+			 tests \
+			 view \
+			 .clang-format \
+			 Makefile \
+			 CMakeLists.txt \
+			 main.cc dvi.html \
+			 viewer.icns \
+			 resource.qrc \
+			 3DViewer/src
 	tar -cvzf 3DViewer.tar.gz 3DViewer
 	rm -rf 3DViewer
 
-tests: download
+tests: clean download test.o
+	./test.o
+
+test.o:
 ifeq ($(OS),Darwin)
 	$(CC) $(CPPFLAGS) $(TESTS) -o test.o $(TEST_FLAGS);
 else
 	$(CC) $(TESTS) $(CPPFLAGS) $(TEST_FLAGS) -o test.o $(LINUX_FLAGS);
 endif
-	./test.o
 
-gcov_report:
-	lcov -t "test"  -o s21_test.info -c -d ./ --no-external --exclude '$(CURRENT_DIR)/resources/*'
+gcov_report: tests
+	lcov -t "test"  -o s21_test.info -c -d ./ --no-external --exclude '$(CURRENT_DIR)/resources/*' --ignore-errors mismatch --ignore-errors unused
 	genhtml ./s21_test.info --output-directory ./report/
 ifeq ($(OS),Darwin)
 	open ./report/index.html
@@ -69,16 +96,14 @@ else
 endif
 
 check:
-	cp ../materials/linters/.clang-format .
 	find . -type f \( -name "*.cc" -o -name "*.h" \) -exec clang-format -n --style="Google" {} \;
 	rm -f .clang-format
 
 lint:
-	cp ../materials/linters/.clang-format .
 	find . -type f \( -name "*.cc" -o -name "*.h" \) -exec clang-format -i --style="Google" {} \;
 	rm -f .clang-format
 
-leaks:
+leaks: download test.o
 ifeq ($(OS),Darwin)
 	leaks --atExit -- ./test.o
 else
@@ -93,8 +118,11 @@ else
 endif
 
 download:
+ifneq ($(OBJ_FILES),$(OBJ_FILES_EXPECTED))
+#	rm -rf obj
 	@echo "Downloading resources..."
 	@curl -O -L https://github.com/tamelabe/-/archive/refs/heads/main.tar.gz
 	@tar -xzf main.tar.gz
 	cd ./--main && unzip -q  obj.zip && mv ./obj ../ && cd ../
 	rm -rf ./main.tar.gz ./--main
+endif

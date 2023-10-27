@@ -1,7 +1,6 @@
 #ifndef SRC_DATA_OBJECTS_H_
 #define SRC_DATA_OBJECTS_H_
 
-#include <QColor>
 #include <filesystem>
 #include <string>
 #include <vector>
@@ -62,18 +61,6 @@ struct Edges {
   float x_max{};
   float y_max{};
   float z_max{};
-};
-
-struct PaintConfig {
- public:
-  QColor color_bg;
-  QColor color_line;
-  QColor color_vertex;
-  double line_width;
-  bool line_dashed;
-  int vertex_size;
-  int vertex_style;         // 0 - none, 1 - ball, 2 - cube
-  bool central_projection;  // false - parallel projection
 };
 
 }  // namespace s21

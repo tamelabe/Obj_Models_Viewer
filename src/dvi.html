@@ -2,40 +2,72 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>3D Viewer Program</title>
+    <title>3DViewer v2.0</title>
 </head>
 <body>
-<h1>3D Viewer Program</h1>
-<h3>by tamelabe, shoredim</h3>
+<h1>3DViewer v2.0 Program Documentation</h1>
+<h3>by tamelabe, yonnarge</h3>
+
+<h2>General Information</h2>
 <p>
-    The 3D Viewer Program is a graphical application that allows you to load and manipulate wireframe models from OBJ files. It provides various features for translating, rotating, and scaling the loaded model, and presents a user-friendly interface to interact with the 3D model.
+    The 3DViewer v2.0 program is an application for visualizing wireframe models in a three-dimensional space.
 </p>
-<h2>Features:</h2>
+
+<h2>Model Format</h2>
+<p>
+    The program supports loading wireframe models from .obj files. Only a list of vertices and faces of the model is supported.
+</p>
+
+<h2>Model Manipulation</h2>
+<p>
+    In the 3DViewer v2.0 program, you can perform the following actions on the model:
+</p>
 <ul>
-    <li>Load a wireframe model from an OBJ file (supports vertices and surfaces list only).</li>
-    <li>Translate the model by a given distance along the X, Y, and Z axes.</li>
-    <li>Rotate the model by a given angle around its X, Y, and Z axes.</li>
-    <li>Scale the model by a given value.</li>
-    <li>GUI implementation based on the <i>Qt</i> library for C++.</li>
-    <li>Visualization area for the wireframe model.</li>
-    <li>Controls for translating, rotating, and scaling the model.</li>
-    <li>Displays information about the uploaded model - file name, number of vertices, and edges.</li>
+    <li>Model Translation: specifying the distance relative to the X, Y, Z axes.</li>
+    <li>Model Rotation: specifying the rotation angle relative to its X, Y, Z axes.</li>
+    <li>Model Scaling: specifying the SCALE value.</li>
 </ul>
-<h2>Performance:</h2>
+
+<h2>Graphical User Interface</h2>
 <p>
-    The program efficiently handles models with varying levels of complexity, ranging from a few vertices to up to a million vertices, without any freezing or interface inactivity for more than 0.5 seconds.
+    The graphical user interface of the program is implemented based on Qt and includes the following elements:
 </p>
-<h2>Implementation Details:</h2>
+<ul>
+    <li>"LOAD FILE" button for selecting a file with the model and a field for displaying the file name.</li>
+    <li>Wireframe model visualization area.</li>
+    <li>Buttons and input fields for model translation.</li>
+    <li>Buttons and input fields for model rotation.</li>
+    <li>Buttons and input fields for model scaling.</li>
+    <li>Information about the loaded model: file name, number of vertices, and edges.</li>
+</ul>
+
+<h2>Limitations</h2>
 <p>
-    The program follows the Model-View-Controller (MVC) pattern to ensure separation of concerns. The business logic is kept in the model, while the view is responsible for displaying the data to the user. The controllers act as intermediaries between the model and view, ensuring a thin controller architecture.
+    When using the 3DViewer v2.0 program, the following limitations should be taken into account:
 </p>
-<h2>Design Patterns Used:</h2>
+<ul>
+    <li>The program should correctly handle and allow viewing models with up to 1,000,000 vertices without freezing.</li>
+</ul>
+
+<h2>Additional Settings</h2>
 <p>
-    The 3D Viewer Program incorporates several design patterns to enhance its structure and maintainability, including Facade, Strategy, and Singleton patterns.
+    The 3DViewer v2.0 program provides the following additional settings:
 </p>
-<h2>Usage:</h2>
+<ul>
+    <li>Projection Type: Parallel and Central.</li>
+    <li>Edge Type: Solid and Dotted.</li>
+    <li>Edge Color and Thickness.</li>
+    <li>Vertex Display Mode: None, Circle, Square.</li>
+    <li>Vertex Color and Size.</li>
+    <li>Background Color Selection.</li>
+    <li>Settings are preserved between program restarts.</li>
+</ul>
+
+<h2>Image Capture</h2>
 <p>
-    To use the 3D Viewer Program, simply load your wireframe model from an OBJ file using the "Load Model" button. Once the model is loaded, you can perform translation, rotation, and scaling operations using the respective controls provided in the interface.
+    The 3DViewer v2.0 program allows saving the generated images in bmp and jpeg formats.
+    It also supports capturing "screencasts" of the current user affine transformations of the loaded object into a gif animation (640x480, 10fps, 5s) by pressing a special button.
 </p>
+
 </body>
 </html>

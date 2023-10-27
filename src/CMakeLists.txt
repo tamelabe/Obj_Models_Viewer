@@ -51,6 +51,7 @@ set(PROJECT_SOURCES
         view/render/ogl_render.cc
         view/render/ogl_render.h
         helpers/data_objects.h
+        helpers/view_data_objects.h
         resource.qrc
         ${app_icon_macos}
         )

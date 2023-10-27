@@ -8,7 +8,7 @@
 #include <QVariant>
 #include <QWidget>
 
-#include "helpers/data_objects.h"
+#include "helpers/view_data_objects.h"
 
 namespace Ui {
 class ViewSettings;

@@ -10,7 +10,7 @@
 #include <iostream>
 
 #include "../../controller/controller.h"
-#include "../../helpers/data_objects.h"
+#include "../../helpers/view_data_objects.h"
 #include "../../view/widgets/widget_settings.h"
 
 QT_BEGIN_NAMESPACE
